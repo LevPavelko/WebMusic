@@ -13,7 +13,7 @@ namespace WebMusic.DAL.EF
     {
         public DbSet<Users> users { get; set; }
         public DbSet<Media> media { get; set; }
-        public DbSet<Genre> genres { get; set; }
+        public DbSet<Genre> genre { get; set; }
         public DbSet<Executor> executor { get; set; }
 
         public WebMusicContext(DbContextOptions<WebMusicContext> options)
