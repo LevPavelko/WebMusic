@@ -19,6 +19,7 @@ namespace WebMusic.Controllers
             _mediaService = mediaService;
             _genreService = genreService;
             _executorService = executorService;
+            _appEnvironment = appEnvironment;
         }
 
 
@@ -43,17 +44,18 @@ namespace WebMusic.Controllers
         {
             //if (ModelState.IsValid)
             //{
-                UserDTO user = await _userService.GetUser(new_media.Id_User);
+                UserDTO user = await _userService.GetUser(new_media.Id_User);  
                 if (user == null)
                 {
                     return BadRequest("User not found.");
+
                 }
-                ExecutorDTO executor = await _executorService.GetExecutor(new_media.id_Executor);
+                ExecutorDTO executor = await _executorService.GetExecutor(new_media.Executor);
                 if (executor == null)
                 {
                     return BadRequest("Executor not found.");
                 }
-                GenreDTO genre = await _genreService.GetGenre(new_media.id_Genre);
+                GenreDTO genre = await _genreService.GetGenre(new_media.Genre);
                 if (genre == null)
                 {
                    return BadRequest("Genre not found.");
@@ -61,14 +63,19 @@ namespace WebMusic.Controllers
 
                
 
-                string fileName = Path.GetFileName(song.FileName);
-                string path = Path.Combine(_appEnvironment.WebRootPath, "songs", fileName);
+                //string fileName = Path.GetFileName(song.FileName);
+            //string path = Path.Combine(_appEnvironment.WebRootPath, "songs", fileName);
+                string path = "/songs/" + song.FileName;
+                
 
+                // Копіюємо вміст потоку файлу в файловий потік
                 using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
                 {
-                    await song.CopyToAsync(fileStream); // копируем файл в поток
+                    await song.CopyToAsync(fileStream);
                 }
-                MediaDTO media = new MediaDTO
+
+
+            MediaDTO media = new MediaDTO
                 {
                     Title = new_media.Title,
                     id_Genre = genre.Id,

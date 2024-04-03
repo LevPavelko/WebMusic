@@ -46,9 +46,9 @@ namespace WebMusic.BLL.Services
             await Database.executor.Delete(id);
             await Database.Save();
         }
-        public async Task<ExecutorDTO> GetExecutor(int id)
+        public async Task<ExecutorDTO> GetExecutor(string name)
         {
-            var author = await Database.executor.Get(id);
+            var author = await Database.executor.Get(name);
             if (author == null)
                 throw new ValidationException("Wrong executor!", "");
             return new ExecutorDTO

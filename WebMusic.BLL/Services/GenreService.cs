@@ -46,9 +46,9 @@ namespace WebMusic.BLL.Services
             await Database.genre.Delete(id);
             await Database.Save();
         }
-        public async Task<GenreDTO> GetGenre(int id)
+        public async Task<GenreDTO> GetGenre(string name)
         {
-            var genre = await Database.genre.Get(id);
+            var genre = await Database.genre.Get(name);
             if (genre == null)
                 throw new ValidationException("Wrong genre!", "");
             return new GenreDTO

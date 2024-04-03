@@ -12,7 +12,7 @@ namespace WebMusic.BLL.Interfaces
         Task CreateGenre(GenreDTO genreDTO);
         Task UpdateGenre(GenreDTO genreDTO);
         Task DeleteGenre(int id);
-        Task<GenreDTO> GetGenre(int id);
+        Task<GenreDTO> GetGenre(string name);
         Task<IEnumerable<GenreDTO>> GetGenres();
     }
 }

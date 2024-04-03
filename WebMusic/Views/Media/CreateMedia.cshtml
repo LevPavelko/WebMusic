@@ -17,17 +17,19 @@
             </div>
             <div class="form-group">
                 <label asp-for="Genre" class="control-label"></label>
-                <select asp-for="Genre" class="form-control" asp-items="@(new SelectList(ViewBag.Genres, "Id", "Name"))">
+               @*  <select asp-for="Genre" class="form-control" asp-items="@(new SelectList(ViewBag.Genre, "Id", "Name"))">
                     <option value="">Select Genre</option>
-                </select>
+                </select> *@
+                <input asp-for="Genre" class="form-control" />
                 <span asp-validation-for="Genre" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Executor" class="control-label"></label>
-                <select asp-for="Executor" class="form-control" asp-items="@(new SelectList(ViewBag.Executors, "Id", "Name"))">
+                @* <select asp-for="Executor" class="form-control" asp-items="@(new SelectList(ViewBag.Executor, "Id", "Name"))">
                     <option value="">Select Executor</option>
-                </select>
-                <span asp-validation-for="Genre" class="text-danger"></span>
+                </select> *@
+                <input asp-for="Executor" class="form-control" />
+                <span asp-validation-for="Executor" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Id_User" class="control-label"></label>

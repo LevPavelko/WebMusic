@@ -57,9 +57,9 @@ namespace WebMusic.BLL.Services
             await Database.media.Delete(id);
             await Database.Save();
         }
-        public async Task<MediaDTO> GetMedia(int id)
+        public async Task<MediaDTO> GetMedia(string name)
         {
-            var song = await Database.media.Get(id);
+            var song = await Database.media.Get(name);
             if (song == null)
                 throw new ValidationException("Wrong song!", "");
             return new MediaDTO
