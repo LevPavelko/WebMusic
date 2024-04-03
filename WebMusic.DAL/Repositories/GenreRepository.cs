@@ -40,7 +40,7 @@ namespace WebMusic.DAL.Repositories
         }
         public async Task<Genre> Get(int id)
         {
-            Genre? genre = await db.genre.FindAsync(id);
+            Genre? genre = await db.genre.FirstOrDefaultAsync(g => g.Id == id);
             return genre;
         }
     }

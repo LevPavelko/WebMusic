@@ -10,7 +10,7 @@ namespace WebMusic.DAL.Interfaces
 {
     public interface IUnitOfWork
     {
-        IRepository<Users> user { get; }
+        IUserRepository user { get; }
         IRepository<Media> media { get; }
 
         IRepository<Genre> genre { get; }

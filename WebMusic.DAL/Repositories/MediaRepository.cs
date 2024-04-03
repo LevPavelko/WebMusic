@@ -41,7 +41,7 @@ namespace WebMusic.DAL.Repositories
         }
         public async Task<Media> Get(int id)
         {
-            Media? media = await db.media.FindAsync(id);
+            Media? media = await db.media.FirstOrDefaultAsync(m=> m.Id ==  id);
             return media;
         }
     }

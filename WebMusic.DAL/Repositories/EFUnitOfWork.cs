@@ -24,7 +24,7 @@ namespace WebMusic.DAL.Repositories
             db = context;
         }
 
-        public IRepository<Users> user
+        public IUserRepository user
         {
             get
             {

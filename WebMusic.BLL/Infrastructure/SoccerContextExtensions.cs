@@ -11,7 +11,7 @@ namespace WebMusic.BLL.Infrastructure
 {
     public static class SoccerContextExtensions
     {
-        public static void AddSoccerContext(this IServiceCollection services, string connection)
+        public static void AddWebMusicContext(this IServiceCollection services, string connection)
         {
             services.AddDbContext<WebMusicContext>(options => options.UseSqlServer(connection));
         }

@@ -13,7 +13,7 @@ using System.Numerics;
 
 namespace WebMusic.DAL.Repositories
 {
-    public class UserRepository : IRepository<Users>
+    public class UserRepository : IUserRepository
     {
         private WebMusicContext db;
 

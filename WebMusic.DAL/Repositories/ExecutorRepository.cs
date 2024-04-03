@@ -43,7 +43,7 @@ namespace WebMusic.DAL.Repositories
         
         public async Task<Executor> Get(int id)
         {
-            Executor? executor = await db.executor.FindAsync(id);
+            Executor? executor = await db.executor.FirstOrDefaultAsync(g => g.Id == id);
             return executor;
         }
     }
