@@ -68,6 +68,25 @@ namespace WebMusic.BLL.Services
 
             };
         }
+        public async Task<UserDTO> GetUserByLogin(string login)
+        {
+            var user = await Database.user.GetByLogin(login);
+            if (user == null)
+                throw new ValidationException("Wrong user!", "");
+            return new UserDTO
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Password = user.Password,
+                Salt = user.Salt,
+                Login = user.Login,
+                Email = user.Email,
+                Status = user.Status
+
+
+            };
+        }
         public async Task<IEnumerable<UserDTO>> GetUsers()
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Users, UserDTO>()).CreateMapper();

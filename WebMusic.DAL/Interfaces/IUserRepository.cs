@@ -12,6 +12,7 @@ namespace WebMusic.DAL.Interfaces
     {
         Task<IEnumerable<Users>> GetAll();
         Task<Users> Get(int id);
+        Task<Users> GetByLogin(string login);
         Task Create(Users item);
         void Update(Users item);
         Task Delete(int id);

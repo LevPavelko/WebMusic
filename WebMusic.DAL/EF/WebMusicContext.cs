@@ -20,12 +20,7 @@ namespace WebMusic.DAL.EF
            : base(options)
         {
             Database.EnsureCreated();
-            //if (Database.EnsureCreated())
-            //{
-            //    media?.Add(new Media { Title = "Богдан", id_Executor = 1, id_Genre = 2, Id_User = 1 });
-
-            //    SaveChanges();
-            //}
+           
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

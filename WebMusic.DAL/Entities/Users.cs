@@ -16,6 +16,6 @@ namespace WebMusic.DAL.Entities
         public string Login { get; set; }
         public string Email { get; set; }
         public int? Status { get; set; }
-        public ICollection<Media> media { get; set; }
+        public virtual ICollection<Media> media { get; set; }
     }
 }

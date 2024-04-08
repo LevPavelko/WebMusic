@@ -81,8 +81,8 @@ namespace WebMusic.BLL.Services
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Media, MediaDTO>()
-                    .ForMember(dest => dest.Executor, opt => opt.MapFrom(src => src.Executor.Name))
-                    .ForMember(dest => dest.Genre, opt => opt.MapFrom(src => src.Genre.Name));
+                    .ForMember("Executor", opt => opt.MapFrom(src => src.Executor.Name))
+                    .ForMember("Genre", opt => opt.MapFrom(src => src.Genre.Name));
             });
             var mapper = new Mapper(config);
             return mapper.Map<IEnumerable<Media>, IEnumerable<MediaDTO>>(await Database.media.GetAll());

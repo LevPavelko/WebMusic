@@ -27,6 +27,11 @@ namespace WebMusic.Controllers
 
         public async Task<IActionResult> Index()
         {
+            //if (HttpContext.Session.GetString("LastName") != null
+            //   && HttpContext.Session.GetString("FirstName") != null)
+            //    return View(await _mediaService.GetMedias());
+            //else
+            //    return RedirectToAction("Login", "LoginAndRegister");
             return View(await _mediaService.GetMedias());
         }
 

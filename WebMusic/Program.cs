@@ -7,6 +7,7 @@ using WebMusic.BLL.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddSession();  
 
 
 string? connection = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -27,7 +28,7 @@ app.UseRouting();
 
 
 //app.UseAuthorization();
-
+app.UseSession();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
