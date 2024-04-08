@@ -21,7 +21,11 @@ namespace WebMusic.Controllers
             _logger = logger;
         }
 
-
+        public ActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
 
 
 

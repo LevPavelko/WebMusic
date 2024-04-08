@@ -17,7 +17,7 @@ namespace WebMusic.BLL.DTO
         
         public int id_Genre { get; set; }
         public  string Genre { get; set; }
-        public string Path { get; set; }
+        public string? Path { get; set; }
 
         public int Id_User { get; set; }
         public string User { get; set; }

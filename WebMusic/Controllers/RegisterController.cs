@@ -6,6 +6,7 @@ using WebMusic.BLL.Interfaces;
 using WebMusic.BLL.DTO;
 using WebMusic.DAL.Entities;
 using WebMusic.Models;
+using WebMusic.DAL.Repositories;
 
 
 namespace WebMusic.Controllers
@@ -35,6 +36,7 @@ namespace WebMusic.Controllers
                 user.Login = reg.Login;
                 user.Email = reg.Email;
                 user.Status = 1;
+
                 byte[] saltbuf = new byte[16];
 
                 RandomNumberGenerator randomNumberGenerator = RandomNumberGenerator.Create();
@@ -62,6 +64,7 @@ namespace WebMusic.Controllers
                 //return RedirectToAction("Login");// do something with that
                
                 HttpContext.Session.SetString("Login", user.Login);
+                HttpContext.Session.SetInt32("Status", user.Status.Value);
                 return RedirectToAction("Index", "Home");
             }
 

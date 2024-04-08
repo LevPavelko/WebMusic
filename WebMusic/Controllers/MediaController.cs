@@ -42,59 +42,51 @@ namespace WebMusic.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(MediaDTO new_media, IFormFile song)
         {
-            if (ModelState.IsValid)
+            UserDTO user = await _userService.GetUser(new_media.Id_User);
+            if (user == null)
             {
-                UserDTO user = await _userService.GetUser(new_media.Id_User);
-                if (user == null)
-                {
-                    return BadRequest("User not found.");
+                return BadRequest("User not found.");
 
-                }
-                ExecutorDTO executor = await _executorService.GetExecutor(new_media.Executor);
-                if (executor == null)
-                {
-                    return BadRequest("Executor not found.");
-                }
-                GenreDTO genre = await _genreService.GetGenre(new_media.Genre);
-                if (genre == null)
-                {
-                    return BadRequest("Genre not found.");
-                }
-
-
-
-                //string fileName = Path.GetFileName(song.FileName);
-                //string path = Path.Combine(_appEnvironment.WebRootPath, "songs", fileName);
-                string path = "/songs/" + song.FileName;
-
-
-                // Копіюємо вміст потоку файлу в файловий потік
-                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
-                {
-                    await song.CopyToAsync(fileStream);
-                }
-
-
-                MediaDTO media = new MediaDTO
-                {
-                    Title = new_media.Title,
-                    id_Genre = genre.Id,
-                    id_Executor = executor.Id,
-                    Path = path,
-                    Id_User = user.Id
-                    
-                };
-
-                await _mediaService.CreateMedia(media);
-
-                return View("~/Views/Home/Index.cshtml", await _mediaService.GetMedias());
-
-
-                //}
-
-                //return View(new_media);
             }
-            return View(new_media);
+            ExecutorDTO executor = await _executorService.GetExecutor(new_media.Executor);
+            if (executor == null)
+            {
+                return BadRequest("Executor not found.");
+            }
+            GenreDTO genre = await _genreService.GetGenre(new_media.Genre);
+            if (genre == null)
+            {
+                return BadRequest("Genre not found.");
+            }
+
+
+
+            //string fileName = Path.GetFileName(song.FileName);
+            //string path = Path.Combine(_appEnvironment.WebRootPath, "songs", fileName);
+            string path = "/songs/" + song.FileName;
+
+
+
+            using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+            {
+                await song.CopyToAsync(fileStream);
+            }
+
+
+            MediaDTO media = new MediaDTO
+            {
+                Title = new_media.Title,
+                id_Genre = genre.Id,
+                id_Executor = executor.Id,
+                Path = path,
+                Id_User = user.Id
+
+            };
+
+            await _mediaService.CreateMedia(media);
+
+            return View("~/Views/Home/Index.cshtml", await _mediaService.GetMedias());
+
         }
     }
 };

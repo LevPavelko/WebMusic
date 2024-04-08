@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using WebMusic.BLL.Interfaces;
 using WebMusic.DAL.Entities;
+using Microsoft.AspNetCore.Http;
 
 namespace WebMusic.Controllers
 {
@@ -36,7 +37,7 @@ namespace WebMusic.Controllers
                 }
 
                 string? salt = users.Salt;
-
+                int ?status = users.Status;
 
                 byte[] password = Encoding.Unicode.GetBytes(salt + loginModel.Password);
 
@@ -53,6 +54,10 @@ namespace WebMusic.Controllers
                     return View(loginModel);
                 }
                 HttpContext.Session.SetString("Login", users.Login);
+                HttpContext.Session.SetInt32("Status", status.Value);
+
+
+
                 return RedirectToAction("Index", "Home");
             }
             return View(loginModel);
