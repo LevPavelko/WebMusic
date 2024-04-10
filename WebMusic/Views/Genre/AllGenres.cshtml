@@ -1,0 +1,29 @@
+﻿@model IEnumerable<WebMusic.BLL.DTO.GenreDTO>
+@{
+    ViewData["Title"] = "fff";
+}
+
+@* @foreach (var item in Model)
+{
+    <ul>
+        <li>
+            @Html.DisplayFor(modelItem => item.Name)
+            <a asp-area="" asp-controller="Genre" asp-action="PostGenre">Delete</a>
+        </li>
+      
+    </ul>
+} *@
+@foreach (var item in Model)
+{
+    <ul>
+        <li>
+            @Html.DisplayFor(modelItem => item.Name)
+            
+            <form asp-area="" asp-controller="Genre" asp-action="DeleteGenre" method="post">
+                <input type="hidden" name="genreId" value="@item.Id" />
+                <button type="submit">Delete</button>
+            </form>
+           @*  <a asp-area="" asp-controller="Genre" asp-action="DeleteGenre" name="genreId" value="@item.Id">Delete</a> *@
+        </li>
+    </ul>
+}

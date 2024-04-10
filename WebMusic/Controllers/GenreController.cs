@@ -47,5 +47,23 @@ namespace WebMusic.Controllers
 
             return View("~/Views/Home/Index.cshtml", await _mediaService.GetMedias());
         }
+        public async Task <IActionResult> AllGenres()
+        {
+            return View(await _genreService.GetGenres());
+        }
+        public async Task<IActionResult> DeleteGenre(int genreId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+           
+
+            await _genreService.DeleteGenre(genreId);
+
+
+            return View("~/Views/Home/Index.cshtml", await _mediaService.GetMedias());
+        }
     }
 }

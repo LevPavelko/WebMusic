@@ -5,20 +5,20 @@
 
 @foreach (var item in Model)
 {
-    <tr>
-        <td>
+    <ul>
+        <li>
             @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
+        </li>
+        <li>
             @Html.DisplayFor(modelItem => item.Genre)
-        </td>
-        <td>
+        </li>
+        <li>
             @Html.DisplayFor(modelItem => item.Executor)
-        </td>
-        <td>
+        </li>
+        <li>
             @Html.DisplayFor(modelItem => item.Id_User)
-        </td>
+        </li>
         @* <div id="poster"><img src=@item.Path /></div> *@
        
-    </tr>
+    </ul>
 }

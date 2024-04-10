@@ -31,23 +31,32 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Media" asp-action="CreateMedia">Create media</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Genre" asp-action="AllGenres">All Genres</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Genre" asp-action="PostGenre">Add Genre</a>
                             </li>
-                            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
+                            </li>
                         }
                         else if(Context.Session.GetInt32("Status") == 2)
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
-                            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
+                            </li>
                         }
                         else if (Context.Session.GetInt32("Status") == 1)
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
-                            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
+                            </li>
                         }
                         else
                         {
@@ -60,7 +69,10 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Register" asp-action="Index">Register</a>
                             </li>
-                            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
+                            </li>
+                           
                         }
                        
                        
