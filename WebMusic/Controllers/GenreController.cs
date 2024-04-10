@@ -62,8 +62,8 @@ namespace WebMusic.Controllers
 
             await _genreService.DeleteGenre(genreId);
 
-
-            return View("~/Views/Home/Index.cshtml", await _mediaService.GetMedias());
+            return RedirectToAction("Index", "Home", await _mediaService.GetMedias());
+            //return View("~/Views/Home/Index.cshtml", await _mediaService.GetMedias());
         }
     }
 }

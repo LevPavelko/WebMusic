@@ -18,12 +18,14 @@
     <ul>
         <li>
             @Html.DisplayFor(modelItem => item.Name)
-            
-            <form asp-area="" asp-controller="Genre" asp-action="DeleteGenre" method="post">
+          
+            <a href="#" onclick="event.preventDefault(); document.getElementById('deleteForm_@item.Id').submit();">Delete</a>
+            <form id="deleteForm_@item.Id" asp-area="" asp-controller="Genre" asp-action="DeleteGenre" method="post" style="display: none;">
                 <input type="hidden" name="genreId" value="@item.Id" />
-                <button type="submit">Delete</button>
             </form>
-           @*  <a asp-area="" asp-controller="Genre" asp-action="DeleteGenre" name="genreId" value="@item.Id">Delete</a> *@
+
+
+
         </li>
     </ul>
 }
