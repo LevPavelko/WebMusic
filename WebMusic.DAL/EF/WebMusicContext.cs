@@ -13,19 +13,14 @@ namespace WebMusic.DAL.EF
     {
         public DbSet<Users> users { get; set; }
         public DbSet<Media> media { get; set; }
-        public DbSet<Genre> genres { get; set; }
+        public DbSet<Genre> genre { get; set; }
         public DbSet<Executor> executor { get; set; }
 
         public WebMusicContext(DbContextOptions<WebMusicContext> options)
            : base(options)
         {
             Database.EnsureCreated();
-            //if (Database.EnsureCreated())
-            //{
-            //    media?.Add(new Media { Title = "Богдан", id_Executor = 1, id_Genre = 2, Id_User = 1 });
-
-            //    SaveChanges();
-            //}
+           
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

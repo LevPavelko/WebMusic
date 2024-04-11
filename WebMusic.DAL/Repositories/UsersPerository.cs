@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Microsoft.EntityFrameworkCore;
+using WebMusic.DAL.EF;
 using WebMusic.DAL.Entities;
 using WebMusic.DAL.Interfaces;
-using WebMusic.DAL.EF;
 using System.Numerics;
-using Microsoft.EntityFrameworkCore;
+
 
 namespace WebMusic.DAL.Repositories
 {
-    public class UserRepository : IRepository<Users>
+    public class UserRepository : IUserRepository
     {
         private WebMusicContext db;
 
@@ -39,6 +40,16 @@ namespace WebMusic.DAL.Repositories
             Users? user = await db.users.FindAsync(id);
             if (user != null)
                 db.users.Remove(user);
+        }
+        public async Task<Users> Get(int id)
+        {
+            Users? user = await db.users.FindAsync(id);
+            return user;
+        }
+        public async Task<Users> GetByLogin(string login)
+        {
+            Users? user = await db.users.FirstOrDefaultAsync(l=> l.Login == login);
+            return user;
         }
     }
 }

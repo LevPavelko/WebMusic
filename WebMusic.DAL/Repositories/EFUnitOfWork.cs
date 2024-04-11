@@ -17,12 +17,14 @@ namespace WebMusic.DAL.Repositories
         private WebMusicContext db;
         private UserRepository userRepository;
         private MediaRepository mediaRepository;
+        private GenreRepository genreRepository;
+        private ExecutorRepository executorRepository;
         public EFUnitOfWork(WebMusicContext context)
         {
             db = context;
         }
 
-        public IRepository<Users> user
+        public IUserRepository user
         {
             get
             {
@@ -41,6 +43,26 @@ namespace WebMusic.DAL.Repositories
                 return mediaRepository;
             }
         }
+        public IRepository <Genre> genre
+        {
+            get
+            {
+                if (genreRepository == null)
+                    genreRepository = new GenreRepository(db);
+                return genreRepository;
+            }
+        }
+
+        public IRepository<Executor> executor
+        {
+            get
+            {
+                if (executorRepository == null)
+                    executorRepository = new ExecutorRepository(db);
+                return executorRepository;
+            }
+        }
+
 
         public async Task Save()
         {

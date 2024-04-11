@@ -1,0 +1,50 @@
+﻿@model WebMusic.BLL.DTO.MediaDTO
+
+@{
+    ViewBag.Title = "Create";
+    // Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Add Song</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Genre" class="control-label"></label>
+               @*  <select asp-for="Genre" class="form-control" asp-items="@(new SelectList(ViewBag.Genre, "Id", "Name"))">
+                    <option value="">Select Genre</option>
+                </select> *@
+                <input asp-for="Genre" class="form-control" />
+                <span asp-validation-for="Genre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Executor" class="control-label"></label>
+                @* <select asp-for="Executor" class="form-control" asp-items="@(new SelectList(ViewBag.Executor, "Id", "Name"))">
+                    <option value="">Select Executor</option>
+                </select> *@
+                <input asp-for="Executor" class="form-control" />
+                <span asp-validation-for="Executor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Id_User" class="control-label"></label>
+                <input asp-for="Id_User" class="form-control" />
+                <span asp-validation-for="Id_User" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Path" class="control-label"></label>
+                <input asp-for="Path" class="form-control" type="file" name="song" />
+                <span asp-validation-for="Path" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
