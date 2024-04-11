@@ -63,5 +63,33 @@ namespace WebMusic.Controllers
             //return View("~/Views/Home/Index.cshtml", await _mediaService.GetMedias());
         }
 
+        public async Task<IActionResult> Edit(ExecutorDTO e)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            await _executorService.UpdateExecutor(e);
+
+
+            return RedirectToAction("Index", "Home", await _mediaService.GetMedias());
+        }
+        public async Task<IActionResult> EditExecutor(int? id)
+        {
+            try
+            {
+                if (id == null)
+                {
+                    return NotFound();
+                }
+                ExecutorDTO team = await _executorService.GetExecutor((int)id);
+                return View(team);
+            }
+            catch
+            {
+                return NotFound();
+            }
+        }
     }
 }
