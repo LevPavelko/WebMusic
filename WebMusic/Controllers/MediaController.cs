@@ -48,16 +48,17 @@ namespace WebMusic.Controllers
                 return BadRequest("User not found.");
 
             }
-            ExecutorDTO executor = await _executorService.GetExecutor(new_media.Executor);
+            ExecutorDTO executor = await _executorService.GetExecutor(new_media.Id);
             if (executor == null)
             {
                 return BadRequest("Executor not found.");
             }
-            GenreDTO genre = await _genreService.GetGenre(new_media.Genre);
+            GenreDTO genre = await _genreService.GetGenre(new_media.Id);
             if (genre == null)
             {
                 return BadRequest("Genre not found.");
             }
+
 
 
 

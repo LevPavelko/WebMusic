@@ -38,9 +38,9 @@ namespace WebMusic.DAL.Repositories
             if (genre != null)
                 db.genre.Remove(genre);
         }
-        public async Task<Genre> Get(string name)
+        public async Task<Genre> Get(int id)
         {
-            Genre? genre = await db.genre.FirstOrDefaultAsync(g => g.Name == name);
+            Genre? genre = await db.genre.FirstOrDefaultAsync(g => g.Id == id);
             return genre;
         }
     }

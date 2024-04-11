@@ -65,5 +65,36 @@ namespace WebMusic.Controllers
             return RedirectToAction("Index", "Home", await _mediaService.GetMedias());
             //return View("~/Views/Home/Index.cshtml", await _mediaService.GetMedias());
         }
+
+        //[HttpPost,ActionName("EditGenre")]
+        //[ValidateAntiForgeryToken]
+        public async Task <IActionResult> Edit(GenreDTO g)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            await _genreService.UpdateGenre(g);
+
+
+            return RedirectToAction("Index", "Home", await _mediaService.GetMedias());
+        }
+        public async Task<IActionResult> EditGenre(int? id)
+        {
+            try
+            {
+                if (id == null)
+                {
+                    return NotFound();
+                }
+                GenreDTO team = await _genreService.GetGenre((int)id);
+                return View(team);
+            }
+            catch 
+            {
+                return NotFound();
+            }
+        }
     }
 }

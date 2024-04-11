@@ -39,9 +39,9 @@ namespace WebMusic.DAL.Repositories
             if (media != null)
                 db.media.Remove(media);
         }
-        public async Task<Media> Get(string name)
+        public async Task<Media> Get(int id)
         {
-            Media? media = await db.media.FirstOrDefaultAsync(m=> m.Title ==  name);
+            Media? media = await db.media.FirstOrDefaultAsync(m=> m.Id ==  id);
             return media;
         }
     }
