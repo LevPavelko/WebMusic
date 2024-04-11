@@ -49,5 +49,19 @@ namespace WebMusic.Controllers
 
             return View("~/Views/Home/Index.cshtml", await _mediaService.GetMedias());
         }
+        [HttpPost]
+        public async Task<IActionResult> Delete(int executorId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            await _executorService.DeleteExecutor(executorId);
+
+            return RedirectToAction("Index", "Home", await _mediaService.GetMedias());
+            //return View("~/Views/Home/Index.cshtml", await _mediaService.GetMedias());
+        }
+
     }
 }
