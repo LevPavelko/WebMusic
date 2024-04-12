@@ -41,6 +41,11 @@ namespace WebMusic.BLL.Services
             var user = new Users
             {
                 Id = userDTO.Id,
+                FirstName = userDTO.FirstName,
+                LastName = userDTO.LastName,
+                Login = userDTO.Login,
+                Password = userDTO.Password,
+                Salt = userDTO.Salt,
                 Email = userDTO.Email,
                 Status = userDTO.Status
 

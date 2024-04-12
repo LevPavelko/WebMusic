@@ -1,0 +1,53 @@
+﻿@model IEnumerable<WebMusic.BLL.DTO.UserDTO>
+@{
+    ViewData["Title"] = "fff";
+}
+<style>
+    .table-container {
+        display: flex;
+        justify-content: center;
+    }
+    th{
+        padding:7px;
+    }
+
+    td{
+        padding: 7px;
+    }
+</style>
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Login</th>
+                <th>Email</th>
+                <th>Status</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Login)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                    <td>
+                        <form asp-action="ChangeStatus" method="post">
+                            <input type="hidden" asp-for="@item.Id" name="Id" />
+                            <input type="hidden" asp-for="@item.FirstName" name="FirstName" />
+                            <input type="hidden" asp-for="@item.LastName" name="LastName" />
+                            <input type="hidden" asp-for="@item.Password" name="Password" />
+                            <input type="hidden" asp-for="@item.Salt" name="Salt" />
+                            <input type="hidden" asp-for="@item.Login" name="Login" />
+                            <input type="hidden" asp-for="@item.Email" name="Email" />
+
+                            <input type="number" id="userStatus_@item.Id" name="Status" value="@Html.DisplayFor(modelItem => item.Status)" style="width: 50px;" />
+                            <button type="submit" class="btn btn-primary">Change Status</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
