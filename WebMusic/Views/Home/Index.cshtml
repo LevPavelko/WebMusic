@@ -18,7 +18,11 @@
         <li>
             @Html.DisplayFor(modelItem => item.Id_User)
         </li>
+        
         @* <div id="poster"><img src=@item.Path /></div> *@
        
     </ul>
+    <audio controls>
+        <source src="@Html.DisplayFor(modelItem => item.Path)">
+    </audio>
 }

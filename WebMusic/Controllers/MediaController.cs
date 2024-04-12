@@ -39,7 +39,7 @@ namespace WebMusic.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(MediaDTO new_media, IFormFile song)
         {
             UserDTO user = await _userService.GetUser(new_media.Id_User);
@@ -48,12 +48,12 @@ namespace WebMusic.Controllers
                 return BadRequest("User not found.");
 
             }
-            ExecutorDTO executor = await _executorService.GetExecutor(new_media.Id);
+            ExecutorDTO executor = await _executorService.GetExecutorByName(new_media.Executor);
             if (executor == null)
             {
                 return BadRequest("Executor not found.");
             }
-            GenreDTO genre = await _genreService.GetGenre(new_media.Id);
+            GenreDTO genre = await _genreService.GetGenreByName(new_media.Genre);
             if (genre == null)
             {
                 return BadRequest("Genre not found.");

@@ -43,5 +43,10 @@ namespace WebMusic.DAL.Repositories
             Genre? genre = await db.genre.FirstOrDefaultAsync(g => g.Id == id);
             return genre;
         }
+        public async Task<Genre> GetByName(string name)
+        {
+            Genre? genre = await db.genre.FirstOrDefaultAsync(g => g.Name == name);
+            return genre;
+        }
     }
 }
