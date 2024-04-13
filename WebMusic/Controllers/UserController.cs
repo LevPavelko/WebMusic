@@ -27,15 +27,15 @@ namespace WebMusic.Controllers
         }
         public async Task <IActionResult> ChangeStatus(UserDTO userDTO)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                _userService?.UpdateUser(userDTO);
+
+
+                return RedirectToAction("Index", "Home");
             }
-
-             _userService.UpdateUser(userDTO);
-
-
-            return RedirectToAction("Index", "Home");
+            return BadRequest(ModelState);
+           
           
         }
     }
