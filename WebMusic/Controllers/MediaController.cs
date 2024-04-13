@@ -89,5 +89,16 @@ namespace WebMusic.Controllers
             return View("~/Views/Home/Index.cshtml", await _mediaService.GetMedias());
 
         }
-    }
+
+        public async Task<IActionResult> DeleteSong(int songId)
+        {
+            if (ModelState.IsValid)
+            {
+                await _mediaService.DeleteMedia(songId);
+                return View("~/Views/Home/Index.cshtml", await _mediaService.GetMedias());
+               
+            }
+            return BadRequest(ModelState);
+        }
+    } 
 };
