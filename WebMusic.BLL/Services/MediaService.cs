@@ -75,6 +75,24 @@ namespace WebMusic.BLL.Services
                 Id_User = song.Id_User
             };
         }
+        public async Task<MediaDTO> GetMediaByName(string name)
+        {
+            var song = await Database.media.GetByName(name);
+            if (song == null)
+                throw new ValidationException("Wrong song!", "");
+            return new MediaDTO
+            {
+
+                Id = song.Id,
+                Title = song.Title,
+                id_Executor = song.id_Executor,
+                Executor = song.Executor?.Name,
+                id_Genre = song.id_Genre,
+                Genre = song.Genre?.Name,
+                Path = song.Path,
+                Id_User = song.Id_User
+            };
+        }
         public async Task<IEnumerable<MediaDTO>> GetMedias()
         {
          

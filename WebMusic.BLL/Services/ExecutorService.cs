@@ -58,6 +58,18 @@ namespace WebMusic.BLL.Services
                 
             };
         }
+        public async Task<ExecutorDTO> GetExecutorByName(string name)
+        {
+            var author = await Database.executor.GetByName(name);
+            if (author == null)
+                throw new ValidationException("Wrong executor!", "");
+            return new ExecutorDTO
+            {
+                Id = author.Id,
+                Name = author.Name
+
+            };
+        }
         public async Task<IEnumerable<ExecutorDTO>> GetExecutors()
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Executor, ExecutorDTO>()).CreateMapper();

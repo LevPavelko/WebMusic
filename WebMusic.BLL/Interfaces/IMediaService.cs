@@ -13,6 +13,7 @@ namespace WebMusic.BLL.Interfaces
         Task UpdateMedia(MediaDTO mediaDTO);
         Task DeleteMedia(int id);
         Task<MediaDTO> GetMedia(int id);
+        Task<MediaDTO> GetMediaByName(string name);
         Task<IEnumerable<MediaDTO>> GetMedias();
     }
 }

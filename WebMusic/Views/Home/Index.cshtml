@@ -18,7 +18,22 @@
         <li>
             @Html.DisplayFor(modelItem => item.Id_User)
         </li>
+        
         @* <div id="poster"><img src=@item.Path /></div> *@
        
     </ul>
+    <audio controls>
+        <source src="@Html.DisplayFor(modelItem => item.Path)">
+    </audio>
+    @if (Context.Session.GetInt32("Status") == 3)
+    {
+        <a href="#" onclick="event.preventDefault(); document.getElementById('deleteForm_@item.Id').submit();">Delete</a>
+        <label>|</label>
+        <a asp-controller="Media" asp-action="EditMedia" asp-route-id="@item.Id">Edit</a>
+        <form id="deleteForm_@item.Id" asp-area="" asp-controller="Media" asp-action="DeleteSong" method="post" style="display: none;">
+            <input type="hidden" name="songId" value="@item.Id" />
+        </form>
+
+
+    }
 }

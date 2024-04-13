@@ -58,6 +58,18 @@ namespace WebMusic.BLL.Services
 
             };
         }
+        public async Task<GenreDTO> GetGenreByName(string name)
+        {
+            var genre = await Database.genre.GetByName(name);
+            if (genre == null)
+                throw new ValidationException("Wrong genre!", "");
+            return new GenreDTO
+            {
+                Id = genre.Id,
+                Name = genre.Name
+
+            };
+        }
         public async Task<IEnumerable<GenreDTO>> GetGenres()
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Genre, GenreDTO>()).CreateMapper();
