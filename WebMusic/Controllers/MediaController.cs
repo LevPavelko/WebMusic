@@ -100,5 +100,59 @@ namespace WebMusic.Controllers
             }
             return BadRequest(ModelState);
         }
+        public async Task<IActionResult> Edit(MediaDTO m, IFormFile song)
+        {
+            //if (ModelState.IsValid)
+            //{
+                UserDTO user = await _userService.GetUser(m.Id_User);
+                if (user == null)
+                {
+                    return BadRequest("User not found.");
+
+                }
+                ExecutorDTO executor = await _executorService.GetExecutorByName(m.Executor);
+                if (executor == null)
+                {
+                    return BadRequest("Executor not found.");
+                }
+                GenreDTO genre = await _genreService.GetGenreByName(m.Genre);
+                if (genre == null)
+                {
+                    return BadRequest("Genre not found.");
+                }
+                string path = "/songs/" + song.FileName;
+
+                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                {
+                    await song.CopyToAsync(fileStream);
+                }
+            
+                m.Id_User = user.Id;
+                m.id_Executor = executor.Id;
+                m.id_Genre = genre.Id;
+                m.Path = path;
+                await _mediaService.UpdateMedia(m);
+                return RedirectToAction("Index", "Home", await _mediaService.GetMedias());
+
+            //}
+            //return BadRequest(ModelState);
+
+        }
+        public async Task<IActionResult> EditMedia(int? id)
+        {
+            try
+            {
+                if (id == null)
+                {
+                    return NotFound();
+                }
+                MediaDTO song = await _mediaService.GetMedia((int)id);
+                return View(song);
+            }
+            catch
+            {
+                return NotFound();
+            }
+        }
     } 
 };

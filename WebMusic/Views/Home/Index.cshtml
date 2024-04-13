@@ -29,7 +29,7 @@
     {
         <a href="#" onclick="event.preventDefault(); document.getElementById('deleteForm_@item.Id').submit();">Delete</a>
         <label>|</label>
-        <a asp-action="EditSong" asp-route-id="@item.Id">Edit</a>
+        <a asp-controller="Media" asp-action="EditMedia" asp-route-id="@item.Id">Edit</a>
         <form id="deleteForm_@item.Id" asp-area="" asp-controller="Media" asp-action="DeleteSong" method="post" style="display: none;">
             <input type="hidden" name="songId" value="@item.Id" />
         </form>
