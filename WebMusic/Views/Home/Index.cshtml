@@ -2,38 +2,107 @@
 @{
     ViewData["Title"] = "fff";
 }
+<style>
+    .audio-player {
+        margin-bottom: 20px;
+        background-color: #56AEFF;
+        border-radius: 25px;
+    }
 
+        .audio-player audio {
+            width: 100%;
+          
+        }
+
+    audio::-webkit-media-controls-panel {
+        background-color: #56AEFF;
+        border: none;
+    }
+
+    .audio-container {
+        display: flex;
+        align-items: center; 
+    }
+
+        .audio-container audio {
+            flex: 1; 
+        }
+
+    .action-links {
+        text-align: center;
+        margin-top: 10px; 
+    }
+
+        .action-links a {
+            margin: 0 5px; 
+        }
+
+    .download-button {
+        background-color: #4CAF50; 
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 25px;
+        
+    }
+    li{
+        text-align: center;
+        list-style-type: none;
+    }
+
+    .delete-button {
+        background-color: #FF5733;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    
+    .edit-button {
+        background-color: #36454F;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+</style>
 @foreach (var item in Model)
 {
-    <ul>
-        <li>
-            @Html.DisplayFor(modelItem => item.Title)
-        </li>
-        <li>
-            @Html.DisplayFor(modelItem => item.Genre)
-        </li>
-        <li>
-            @Html.DisplayFor(modelItem => item.Executor)
-        </li>
-        <li>
-            @Html.DisplayFor(modelItem => item.Id_User)
-        </li>
-        
-        @* <div id="poster"><img src=@item.Path /></div> *@
-       
-    </ul>
-    <audio controls>
-        <source src="@Html.DisplayFor(modelItem => item.Path)">
-    </audio>
-    @if (Context.Session.GetInt32("Status") == 3)
-    {
-        <a href="#" onclick="event.preventDefault(); document.getElementById('deleteForm_@item.Id').submit();">Delete</a>
-        <label>|</label>
-        <a asp-controller="Media" asp-action="EditMedia" asp-route-id="@item.Id">Edit</a>
-        <form id="deleteForm_@item.Id" asp-area="" asp-controller="Media" asp-action="DeleteSong" method="post" style="display: none;">
-            <input type="hidden" name="songId" value="@item.Id" />
-        </form>
+    <div class="audio-player">
+        <ul>
+            <li style="font-size: 26px;">@Html.DisplayFor(modelItem => item.Title)</li>
+            <li style="font-size: 22px;">@Html.DisplayFor(modelItem => item.Executor)</li>
+        </ul>
+        <div class="audio-container">
+            <audio controls>
+                <source src="@Html.DisplayFor(modelItem => item.Path)">
+            </audio>
+            <a href="@Html.DisplayFor(modelItem => item.Path)" class="download-button" download>
+                <img src="/images/222.png" width="15px" height="15px" />
+            </a>
+        </div>
 
-
-    }
+        <
+        <div class="action-links">
+            @if (Context.Session.GetInt32("Status") == 3)
+            {
+                <a href="#" onclick="event.preventDefault(); document.getElementById('deleteForm_@item.Id').submit();" class="delete-button">Delete</a>
+                <label>|</label>
+                <a asp-controller="Media" asp-action="EditMedia" asp-route-id="@item.Id" class="edit-button">Edit</a>
+                <form id="deleteForm_@item.Id" asp-area="" asp-controller="Media" asp-action="DeleteSong" method="post" style="display: none;">
+                    <input type="hidden" name="songId" value="@item.Id" />
+                </form>
+            }
+        </div>
+    </div>
 }
