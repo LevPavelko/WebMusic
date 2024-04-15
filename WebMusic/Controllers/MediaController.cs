@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebMusic.BLL.DTO;
 using WebMusic.BLL.Interfaces;
@@ -29,10 +30,14 @@ namespace WebMusic.Controllers
         //}
 
 
-        public async Task<IActionResult> CreateMediaAsync()
+        public async Task<IActionResult> CreateMedia()
         {
-            ViewBag.Genres = await _genreService.GetGenres();
-            ViewBag.Executors = await _executorService.GetExecutors();
+            //ViewBag.Genres = new SelectList(await _genreService.GetGenres(), "Id", "Name");
+            //ViewBag.Executors = new SelectList(await _executorService.GetExecutors(), "Id", "Name");
+            //ViewBag.Genres = await _genreService.GetGenres();
+            ViewBag.ListGenre = new SelectList(await _genreService.GetGenres(), "Id", "Name");
+            ViewBag.ListExecutor = new SelectList(await _executorService.GetExecutors(), "Id", "Name");
+           
             return View();
 
 
@@ -51,12 +56,12 @@ namespace WebMusic.Controllers
                 return BadRequest("User not found.");
 
             }
-            ExecutorDTO executor = await _executorService.GetExecutorByName(new_media.Executor);
+            ExecutorDTO executor = await _executorService.GetExecutor(new_media.id_Executor);
             if (executor == null)
             {
                 return BadRequest("Executor not found.");
             }
-            GenreDTO genre = await _genreService.GetGenreByName(new_media.Genre);
+            GenreDTO genre = await _genreService.GetGenre(new_media.id_Genre);
             if (genre == null)
             {
                 return BadRequest("Genre not found.");
@@ -67,8 +72,8 @@ namespace WebMusic.Controllers
             string path = "/songs/" + song.FileName;
             new_media.Path = path;
 
-           if(ModelState.IsValid)
-           {
+            if (ModelState.IsValid)
+            {
                 using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
                 {
                     await song.CopyToAsync(fileStream);
@@ -88,11 +93,13 @@ namespace WebMusic.Controllers
                 await _mediaService.CreateMedia(media);
 
                 return View("~/Views/Home/Index.cshtml", await _mediaService.GetMedias());
-           }
+            }
+            ViewBag.ListGenre = new SelectList(await _genreService.GetGenres(), "Id", "Name");
+            ViewBag.ListExecutor = new SelectList(await _executorService.GetExecutors(), "Id", "Name");
             return View("CreateMedia", new_media);
 
 
-           
+
 
         }
 
@@ -108,40 +115,46 @@ namespace WebMusic.Controllers
         }
         public async Task<IActionResult> Edit(MediaDTO m, IFormFile song)
         {
-            //if (ModelState.IsValid)
-            //{
-                UserDTO user = await _userService.GetUser(m.Id_User);
-                if (user == null)
-                {
-                    return BadRequest("User not found.");
+            var userId = HttpContext.Session.GetInt32("Id").Value;
+            m.Id_User = userId;
+            UserDTO user = await _userService.GetUser(m.Id_User);
+            if (user == null)
+            {
+                return BadRequest("User not found.");
 
-                }
-                ExecutorDTO executor = await _executorService.GetExecutorByName(m.Executor);
-                if (executor == null)
-                {
-                    return BadRequest("Executor not found.");
-                }
-                GenreDTO genre = await _genreService.GetGenreByName(m.Genre);
-                if (genre == null)
-                {
-                    return BadRequest("Genre not found.");
-                }
-                string path = "/songs/" + song.FileName;
+            }
+            ExecutorDTO executor = await _executorService.GetExecutor(m.id_Executor);
+            if (executor == null)
+            {
+                return BadRequest("Executor not found.");
+            }
+            GenreDTO genre = await _genreService.GetGenre(m.id_Genre);
+            if (genre == null)
+            {
+                return BadRequest("Genre not found.");
+            }
+            string path = "/songs/" + song.FileName;
 
+            if (ModelState.IsValid)
+            {
                 using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
                 {
                     await song.CopyToAsync(fileStream);
                 }
-            
+
                 m.Id_User = user.Id;
                 m.id_Executor = executor.Id;
                 m.id_Genre = genre.Id;
                 m.Path = path;
                 await _mediaService.UpdateMedia(m);
                 return RedirectToAction("Index", "Home", await _mediaService.GetMedias());
+            }
+               
+            ViewBag.ListGenre = new SelectList(await _genreService.GetGenres(), "Id", "Name");
+            ViewBag.ListExecutor = new SelectList(await _executorService.GetExecutors(), "Id", "Name");
+            return View("EditMedia",m);
 
-            //}
-            //return BadRequest(ModelState);
+            
 
         }
         public async Task<IActionResult> EditMedia(int? id)
@@ -153,6 +166,8 @@ namespace WebMusic.Controllers
                     return NotFound();
                 }
                 MediaDTO song = await _mediaService.GetMedia((int)id);
+                ViewBag.ListGenre = new SelectList(await _genreService.GetGenres(), "Id", "Name");
+                ViewBag.ListExecutor = new SelectList(await _executorService.GetExecutors(), "Id", "Name");
                 return View(song);
             }
             catch

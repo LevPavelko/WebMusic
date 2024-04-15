@@ -12,7 +12,7 @@ namespace WebMusic.Controllers
         public UserController(IUserService userService, IMediaService mediaService)
         {
             _userService = userService;
-            
+            _mediaService = mediaService;
 
         }
 

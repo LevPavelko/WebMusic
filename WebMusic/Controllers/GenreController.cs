@@ -71,15 +71,16 @@ namespace WebMusic.Controllers
         //[ValidateAntiForgeryToken]
         public async Task <IActionResult> Edit(GenreDTO g)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                await _genreService.UpdateGenre(g);
+
+
+                return RedirectToAction("Index", "Home", await _mediaService.GetMedias());
             }
+            return View("EditGenre", g);
 
-            await _genreService.UpdateGenre(g);
 
-
-            return RedirectToAction("Index", "Home", await _mediaService.GetMedias());
         }
         public async Task<IActionResult> EditGenre(int? id)
         {
