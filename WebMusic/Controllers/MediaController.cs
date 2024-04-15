@@ -39,10 +39,13 @@ namespace WebMusic.Controllers
         }
 
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(MediaDTO new_media, IFormFile song)
         {
-            UserDTO user = await _userService.GetUser(new_media.Id_User);
+          
+            var userId = HttpContext.Session.GetInt32("Id").Value;
+            new_media.Id_User = userId;
+            UserDTO user = await _userService.GetUser(userId);
             if (user == null)
             {
                 return BadRequest("User not found.");
@@ -59,34 +62,37 @@ namespace WebMusic.Controllers
                 return BadRequest("Genre not found.");
             }
 
-
-
-
             //string fileName = Path.GetFileName(song.FileName);
             //string path = Path.Combine(_appEnvironment.WebRootPath, "songs", fileName);
             string path = "/songs/" + song.FileName;
+            new_media.Path = path;
+
+           if(ModelState.IsValid)
+           {
+                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                {
+                    await song.CopyToAsync(fileStream);
+                }
 
 
+                MediaDTO media = new MediaDTO
+                {
+                    Title = new_media.Title,
+                    id_Genre = genre.Id,
+                    id_Executor = executor.Id,
+                    Path = new_media.Path,
+                    Id_User = user.Id
 
-            using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
-            {
-                await song.CopyToAsync(fileStream);
-            }
+                };
+
+                await _mediaService.CreateMedia(media);
+
+                return View("~/Views/Home/Index.cshtml", await _mediaService.GetMedias());
+           }
+            return View("CreateMedia", new_media);
 
 
-            MediaDTO media = new MediaDTO
-            {
-                Title = new_media.Title,
-                id_Genre = genre.Id,
-                id_Executor = executor.Id,
-                Path = path,
-                Id_User = user.Id
-
-            };
-
-            await _mediaService.CreateMedia(media);
-
-            return View("~/Views/Home/Index.cshtml", await _mediaService.GetMedias());
+           
 
         }
 

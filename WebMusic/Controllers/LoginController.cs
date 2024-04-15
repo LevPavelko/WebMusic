@@ -55,6 +55,7 @@ namespace WebMusic.Controllers
                 }
                 HttpContext.Session.SetString("Login", users.Login);
                 HttpContext.Session.SetInt32("Status", status.Value);
+                HttpContext.Session.SetInt32("Id", users.Id);
 
 
 

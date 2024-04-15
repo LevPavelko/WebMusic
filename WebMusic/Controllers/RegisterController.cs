@@ -67,6 +67,7 @@ namespace WebMusic.Controllers
                
                 HttpContext.Session.SetString("Login", user.Login);
                 HttpContext.Session.SetInt32("Status", user.Status.Value);
+                HttpContext.Session.SetInt32("Id", user.Id);
                 return RedirectToAction("Index", "Home");
             }
 
