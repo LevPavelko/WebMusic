@@ -32,8 +32,8 @@ namespace WebMusic.Controllers
                 var users = await _userService.GetUserByLogin(loginModel.Login);
                 if (users == null)
                 {
-                    ModelState.AddModelError("", "Wrong login or password!");
-                    return View(loginModel);
+                    ModelState.AddModelError("", "Не правильный логин или пароль");
+                    return View("Index", loginModel); 
                 }
 
                 string? salt = users.Salt;
@@ -50,8 +50,8 @@ namespace WebMusic.Controllers
 
                 if (users.Password != hash.ToString())
                 {
-                    ModelState.AddModelError("", "Wrong login or password!");
-                    return View(loginModel);
+                    ModelState.AddModelError("", "Не правильный логин или пароль");
+                    return View("Index",loginModel);
                 }
                 HttpContext.Session.SetString("Login", users.Login);
                 HttpContext.Session.SetInt32("Status", status.Value);
@@ -60,7 +60,7 @@ namespace WebMusic.Controllers
 
                 return RedirectToAction("Index", "Home");
             }
-            return View(loginModel);
+            return View("Index", loginModel);
         }
 
 

@@ -31,6 +31,8 @@ namespace WebMusic.Controllers
             if (ModelState.IsValid)
             {
                 UserDTO user = new UserDTO();
+                if (reg.Login == "admin")
+                    ModelState.AddModelError("Login", "admin - запрещенное имя");
                 user.FirstName = reg.FirstName;
                 user.LastName = reg.LastName;
                 user.Login = reg.Login;
@@ -68,7 +70,8 @@ namespace WebMusic.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            return View(reg);
+            return View("Index", reg);
+
         }
     }
 }

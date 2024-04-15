@@ -48,6 +48,14 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
                             </li>
+
+                            @* <li style="margin-left:auto;">
+                                <h5>Login</h5>
+                            </li> *@
+                            <li style="margin-left: auto; margin-top: 5px;">
+                              
+                                <img src="/images/4519678.png" width="25px" height="25px" />
+                            </li>
                         }
                         else if(Context.Session.GetInt32("Status") == 2)
                         {
@@ -57,7 +65,12 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
                             </li>
+                            <li style="margin-left: auto; margin-top: 5px;">
+
+                                <img src="/images/4519678.png" width="25px" height="25px" />
+                            </li>
                         }
+
                         else if (Context.Session.GetInt32("Status") == 1)
                         {
                             <li class="nav-item">
@@ -66,24 +79,22 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
                             </li>
+                            <li style="margin-left: auto; margin-top: 5px;">
+
+                                <img src="/images/4519678.png" width="25px" height="25px" />
+                            </li>
                         }
                         else
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Index">Login</a>
-                            </li>
-                            <li class="nav-item">
+
+                           
+                          @*   <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Register" asp-action="Index">Register</a>
-                            </li>
+                            </li> *@
                          
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Executor" asp-action="AddExecutor">Add Exexcutor</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Executor" asp-action="AllExecutors">All Exexcutors</a>
+                            
+                            <li class="nav-item ml-auto" style="margin-left: auto;">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Index">Login</a>
                             </li>
                         }
                        
