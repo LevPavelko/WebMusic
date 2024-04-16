@@ -2,80 +2,7 @@
 @{
     ViewData["Title"] = "fff";
 }
-<style>
-    .audio-player {
-        margin-bottom: 20px;
-        background-color: #56AEFF;
-        border-radius: 25px;
-    }
 
-        .audio-player audio {
-            width: 100%;
-          
-        }
-
-    audio::-webkit-media-controls-panel {
-        background-color: #56AEFF;
-        border: none;
-    }
-
-    .audio-container {
-        display: flex;
-        align-items: center; 
-    }
-
-        .audio-container audio {
-            flex: 1; 
-        }
-
-    .action-links {
-        text-align: center;
-        margin-top: 10px; 
-    }
-
-        .action-links a {
-            margin: 0 5px; 
-        }
-
-    .download-button {
-        background-color: #4CAF50; 
-        border: none;
-        color: white;
-        padding: 10px 20px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        border-radius: 25px;
-        
-    }
-    li{
-        text-align: center;
-        list-style-type: none;
-    }
-
-    .delete-button {
-        background-color: #FF5733;
-        color: white;
-        padding: 5px 10px;
-        border: none;
-        border-radius: 5px;
-        text-decoration: none;
-    }
-
-    
-    .edit-button {
-        background-color: #36454F;
-        color: white;
-        padding: 5px 10px;
-        border: none;
-        border-radius: 5px;
-        text-decoration: none;
-    }
-
-</style>
 @foreach (var item in Model)
 {
     <div class="audio-player">
@@ -92,7 +19,7 @@
             </a>
         </div>
 
-        <
+        
         <div class="action-links">
             @if (Context.Session.GetInt32("Status") == 3)
             {
