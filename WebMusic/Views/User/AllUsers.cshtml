@@ -3,22 +3,13 @@
     ViewData["Title"] = "fff";
 }
 <style>
-    .table-container {
-        display: flex;
-        justify-content: center;
-    }
-    th{
-        padding:7px;
-    }
-
-    td{
-        padding: 7px;
-    }
+   
+  
 </style>
-<div class="table-container">
+<div class="userDiv">
     <table>
         <thead>
-            <tr>
+            <tr style="color: #253e24;">
                 <th>Login</th>
                 <th>Email</th>
                 <th>Status</th>
@@ -41,8 +32,8 @@
                             <input type="hidden" asp-for="@item.Login" name="Login" />
                             <input type="hidden" asp-for="@item.Email" name="Email" />
 
-                            <input type="number" id="userStatus_@item.Id" name="Status" value="@Html.DisplayFor(modelItem => item.Status)" style="width: 50px;" />
-                            <button type="submit" class="btn btn-primary">Change Status</button>
+                            <input type="number" id="userStatus_@item.Id" class="status" name="Status" value="@Html.DisplayFor(modelItem => item.Status)" style="width: 50px;" />
+                            <button type="button" class="changeStatusButton">Change Status</button>
                         </form>
                     </td>
                 </tr>

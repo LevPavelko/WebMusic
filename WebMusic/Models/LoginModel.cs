@@ -4,10 +4,10 @@ namespace WebMusic.Models
 {
     public class LoginModel
     {
-        [Required]
+        [Required(ErrorMessage = "Поле должно быть установлено")]
         public string? Login { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Поле должно быть установлено")]
         [DataType(DataType.Password)]
         public string? Password { get; set; }
     }

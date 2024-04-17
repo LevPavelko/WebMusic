@@ -36,18 +36,19 @@ namespace WebMusic.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddExecutor(ExecutorDTO e)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                ExecutorDTO executor = new ExecutorDTO();
+                //genre.Id = g.Id;
+                executor.Name = e.Name;
+                await _executorService.CreateExecutor(executor);
+
+                //return RedirectToAction("Index");
+
+                return View("~/Views/Home/Index.cshtml", await _mediaService.GetMedias());
+               
             }
-            ExecutorDTO executor = new ExecutorDTO();
-            //genre.Id = g.Id;
-            executor.Name = e.Name;
-            await _executorService.CreateExecutor(executor);
-
-            //return RedirectToAction("Index");
-
-            return View("~/Views/Home/Index.cshtml", await _mediaService.GetMedias());
+            return View("AddExecutor", e);
         }
         [HttpPost]
         public async Task<IActionResult> Delete(int executorId)
@@ -65,15 +66,15 @@ namespace WebMusic.Controllers
 
         public async Task<IActionResult> Edit(ExecutorDTO e)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                await _executorService.UpdateExecutor(e);
+
+
+                return RedirectToAction("Index", "Home", await _mediaService.GetMedias());
             }
+            return View("EditExecutor", e);
 
-            await _executorService.UpdateExecutor(e);
-
-
-            return RedirectToAction("Index", "Home", await _mediaService.GetMedias());
         }
         public async Task<IActionResult> EditExecutor(int? id)
         {

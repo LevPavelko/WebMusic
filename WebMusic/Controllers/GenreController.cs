@@ -34,18 +34,19 @@ namespace WebMusic.Controllers
         [ValidateAntiForgeryToken]
         public async Task <IActionResult> PostGenre(GenreDTO g)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                GenreDTO genre = new GenreDTO();
+                //genre.Id = g.Id;
+                genre.Name = g.Name;
+                await _genreService.CreateGenre(genre);
+
+                //return RedirectToAction("Index");
+
+                return View("~/Views/Home/Index.cshtml", await _mediaService.GetMedias());
             }
-            GenreDTO genre = new GenreDTO();
-            //genre.Id = g.Id;
-            genre.Name = g.Name;
-            await _genreService.CreateGenre(genre);
-
-            //return RedirectToAction("Index");
-
-            return View("~/Views/Home/Index.cshtml", await _mediaService.GetMedias());
+            //return BadRequest(ModelState);
+            return View("PostGenre", g);
         }
         public async Task <IActionResult> AllGenres()
         {
@@ -70,15 +71,16 @@ namespace WebMusic.Controllers
         //[ValidateAntiForgeryToken]
         public async Task <IActionResult> Edit(GenreDTO g)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                await _genreService.UpdateGenre(g);
+
+
+                return RedirectToAction("Index", "Home", await _mediaService.GetMedias());
             }
+            return View("EditGenre", g);
 
-            await _genreService.UpdateGenre(g);
 
-
-            return RedirectToAction("Index", "Home", await _mediaService.GetMedias());
         }
         public async Task<IActionResult> EditGenre(int? id)
         {
