@@ -4,38 +4,46 @@
     ViewBag.Title = "Edit Song";
     // Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h1>Add Song</h1>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit" method="post" enctype="multipart/form-data">
-            <input type="hidden" asp-for="Id" />
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label class="control-label">Genre</label>
-               
-                <select asp-for="id_Genre" class="form-control" asp-items="ViewBag.ListGenre as SelectList"></select>
-            </div>
-            <div class="form-group">
-                <label  class="control-label">Executor</label>
-               
-                <select asp-for="id_Executor" class="form-control" asp-items="ViewBag.ListExecutor as SelectList"></select>
-            </div>
-           
-            <div class="form-group">
-                <label asp-for="Path" class="control-label"></label>
-                <input asp-for="Path" class="form-control" type="file" name="song" />
-                <span asp-validation-for="Path" class="text-danger"></span>
+
+<div class="formDiv">
+    <h1>Edit Song</h1>
+    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Id" />
+        <div asp-validation-summary="ModelOnly" class="validation"></div>
+        <div class="inputTextBox">
+            <label asp-for="Title" class="label"></label>
+            <input asp-for="Title" class="allInput" />
+            <span asp-validation-for="Title" class="validation"></span>
+        </div>
+        <div class="inputTextBox">
+            <label class="label">Genre</label>
+
+            <select asp-for="id_Genre" class="allInput" asp-items="ViewBag.ListGenre as SelectList"></select>
+        </div>
+        <div class="inputTextBox">
+            <label class="label">Executor</label>
+
+            <select asp-for="id_Executor" class="allInput" asp-items="ViewBag.ListExecutor as SelectList"></select>
+        </div>
+
+        <div class="inputTextBox">
+
+
+            <label asp-for="Path" class="label"></label>
+            <div class="content">
+
+                <div class="box">
+                    <input asp-for="Path" type="file" name="song" id="file-1" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" multiple />
+                    <label for="file-1"><img src="~/images/222.png" width="20" height="17" viewBox="0 0 20 17"></img> <span>Choose a song...</span></label>
+                </div>
+
             </div>
 
-            <div class="form-group">
-                <input type="submit" value="Edit" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+        </div>
+
+        <div class="inputTextBox">
+            <input type="submit" value="Edit" class="submitButton" />
+        </div>
+    </form>
+
 </div>
