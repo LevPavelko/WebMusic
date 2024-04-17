@@ -1,25 +1,24 @@
 ﻿@model WebMusic.BLL.DTO.GenreDTO
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit Genre";
     // Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h1>Edit Genre</h1>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
 
-            <div class="form-group">
-                <input type="submit" value="Edit" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+<div class="formDiv">
+    <h1>Edit Genre</h1>
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="inputTextBox">
+            <label asp-for="Name" class="label"></label>
+            <input asp-for="Name" class="login-input" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Edit" class="submitButton" />
+        </div>
+    </form>
 </div>
+<a class="label" style="color: white" asp-area="" asp-controller="Genre" asp-action="AllGenres">Вернуться к списку</a>
