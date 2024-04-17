@@ -7,22 +7,22 @@
 
 
 
-<div class="loginDiv">
+<div class="formDiv">
     <h1>Login</h1>
     <form asp-action="Login">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="inputField">
+        <div class="inputTextBox">
             <label asp-for="Login" class="login-label"></label>
             <input asp-for="Login" class="login-input" />
             <span asp-validation-for="Login" class="validation"></span>
         </div>
-        <div class="inputField">
+        <div class="inputTextBox">
             <label asp-for="Password" class="login-label"></label>
             <input asp-for="Password" class="login-input" />
             <span asp-validation-for="Password" class="validation"></span>
         </div>
         <div class="form-group">
-            <input type="submit" value="Login"  class="login" />
+            <input type="submit" value="Login" class="submitButton" />
         </div>
       
     </form>
