@@ -13,18 +13,18 @@
 
 
         <div class="inputTextBox">
-            <label asp-for="Title" class="login-label"></label>
+            <label asp-for="Title" class="label"></label>
             <input asp-for="Title" class="login-input" />
             <span asp-validation-for="Title" class="validation"></span>
         </div>
         <div class="inputTextBox">
-            <label class="login-label">Genre</label>
+            <label class="label">Genre</label>
 
             <select asp-for="id_Genre" class="login-input" asp-items="ViewBag.ListGenre as SelectList"></select>
 
         </div>
         <div class="inputTextBox">
-            <label class="login-label">Executor</label>
+            <label class="label">Executor</label>
 
             <select asp-for="id_Executor" class="login-input" asp-items="ViewBag.ListExecutor as SelectList"></select>
         </div>
@@ -32,7 +32,7 @@
         <div class="inputTextBox">
            
          
-            <label asp-for="Path" class="login-label"></label>
+            <label asp-for="Path" class="label"></label>
             <div class="content">
 
                 <div class="box">

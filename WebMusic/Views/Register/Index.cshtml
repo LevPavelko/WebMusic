@@ -11,33 +11,33 @@
     <form asp-action="Register">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="inputTextBox">
-            <label asp-for="FirstName" class="login-label"></label>
+            <label asp-for="FirstName" class="label"></label>
             <input asp-for="FirstName" class="login-input" />
             <span asp-validation-for="FirstName" class="validation"></span>
 
         </div>
         <div class="inputTextBox">
-            <label asp-for="LastName" class="login-label"></label>
+            <label asp-for="LastName" class="label"></label>
             <input asp-for="LastName" class="login-input" />
             <span asp-validation-for="LastName" class="validation"></span>
         </div>
         <div class="inputTextBox">
-            <label asp-for="Login" class="login-label"></label>
+            <label asp-for="Login" class="label"></label>
             <input asp-for="Login" class="login-input" />
             <span asp-validation-for="Login" class="validation"></span>
         </div>
         <div class="inputTextBox">
-            <label asp-for="Email" class="login-label"></label>
+            <label asp-for="Email" class="label"></label>
             <input asp-for="Email" class="login-input" />
             <span asp-validation-for="Email" class="validation"></span>
         </div>
         <div class="inputTextBox">
-            <label asp-for="Password" class="login-label"></label>
+            <label asp-for="Password" class="label"></label>
             <input asp-for="Password" class="login-input" />
             <span asp-validation-for="Password" class="validation"></span>
         </div>
         <div class="inputTextBox">
-            <label asp-for="PasswordConfirm" class="login-label"></label>
+            <label asp-for="PasswordConfirm" class="label"></label>
             <input asp-for="PasswordConfirm" class="login-input" />
             <span asp-validation-for="PasswordConfirm" class="validation"></span>
         </div>
@@ -48,5 +48,5 @@
     </form>
 
 </div>
-<label class="login-label" style="color: white">Уже есть аккаунт?</label>
-<a class="login-label" style="color: white" asp-area="" asp-controller="Login" asp-action="Index">Войти</a>
+<label class="label" style="color: white">Уже есть аккаунт?</label>
+<a class="label" style="color: white" asp-area="" asp-controller="Login" asp-action="Index">Войти</a>

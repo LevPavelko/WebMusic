@@ -4,22 +4,21 @@
     ViewBag.Title = "Create";
     // Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h1>Add Genre</h1>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="PostGenre" method="post" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
 
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+
+<div class="formDiv">
+    <h1>Add Genre</h1>
+    <form asp-action="PostGenre" method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="inputTextBox">
+            <label asp-for="Name" class="label"></label>
+            <input asp-for="Name" class="login-input" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Create" class="submitButton" />
+        </div>
+    </form>
+ </div>
