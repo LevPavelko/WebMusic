@@ -106,7 +106,6 @@ li {
 
 
 
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 * {
@@ -183,7 +182,7 @@ h1 {
 
 
 
-.login-input {
+.allInput {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -197,7 +196,7 @@ h1 {
     box-sizing: border-box;
 }
 
-    .login-input:focus {
+    .allInput:focus {
         outline: none;
     }
 
@@ -276,3 +275,61 @@ h1 {
     border-radius: 25px;
     height: 75px;
 }
+/*.userDiv {
+    margin: auto;
+    padding: 15px;*/
+    /*width: clamp(350px, 30%, 420px);
+    height: clamp(400px, 50%, 450px);*/
+    /*background-color: #C7E8CA;
+    border-radius: 35px;
+    box-sizing: content-box;
+    box-shadow: 0 0 20px -8px #4a7d47;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}*/
+.userDiv {
+    margin: auto; 
+    padding: 20px;
+    background-color: #C7E8CA;
+    border-radius: 35px;
+    box-sizing: content-box;
+    width: 60%;
+    box-shadow: 0 0 20px -8px #4a7d47;
+    display: flex; /* Устанавливаем встроенный блочный тип для контейнера */
+
+    justify-content: center;
+}
+
+     
+th {
+   
+    font-size: 27px;
+    padding: 10px;
+    padding-right: 15px;
+}
+
+td {
+    font-size: 23px;
+    padding: 7px;
+}
+.changeStatusButton {
+    padding: 25px;
+    background-color: #4a7d47;
+    color: white;
+    padding: 3px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.status { 
+   
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid #4a7d47;
+    box-sizing: border-box;
+}
+    .status:focus {
+        outline: none;
+    }

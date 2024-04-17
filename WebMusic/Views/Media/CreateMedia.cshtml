@@ -14,19 +14,19 @@
 
         <div class="inputTextBox">
             <label asp-for="Title" class="label"></label>
-            <input asp-for="Title" class="login-input" />
+            <input asp-for="Title" class="allInput" />
             <span asp-validation-for="Title" class="validation"></span>
         </div>
         <div class="inputTextBox">
             <label class="label">Genre</label>
 
-            <select asp-for="id_Genre" class="login-input" asp-items="ViewBag.ListGenre as SelectList"></select>
+            <select asp-for="id_Genre" class="allInput" asp-items="ViewBag.ListGenre as SelectList"></select>
 
         </div>
         <div class="inputTextBox">
             <label class="label">Executor</label>
 
-            <select asp-for="id_Executor" class="login-input" asp-items="ViewBag.ListExecutor as SelectList"></select>
+            <select asp-for="id_Executor" class="allInput" asp-items="ViewBag.ListExecutor as SelectList"></select>
         </div>
 
         <div class="inputTextBox">
