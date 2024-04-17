@@ -17,6 +17,262 @@ html {
   min-height: 100%;
 }
 
+/*body {
+  
+}*/
+
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background: #2C3646;
+    min-width: 100vh;
+    background-size: cover;
+    background-position: center;
+    height: 50% !important;
+}
+
+.audio-player {
+    margin-bottom: 20px;
+    background-color: #C7E8CA;
+    border-radius: 25px;
+    height: 170px;
+}
+
+    .audio-player audio {
+        width: 100%;
+    }
+
+audio::-webkit-media-controls-panel {
+    background-color: #C7E8CA;
+    border: none;
+}
+
+.audio-container {
+    display: flex;
+    align-items: center;
+}
+
+    .audio-container audio {
+        flex: 1;
+    }
+
+.action-links {
+    text-align: center;
+    margin-left: 30px;
+}
+
+    .action-links a {
+        margin: 0 2px;
+    }
+
+.download-button {
+    background-color: #4a7d47;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+li {
+    text-align: center;
+    list-style-type: none;
+}
+
+.delete-button {
+    background-color: #FF5733;
+    color: white;
+    padding: 3px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+
+.edit-button {
+    background-color: #36454F;
+    color: white;
+    padding: 3px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    font-family: 'Poppins';
+}
+
+
+.formDiv {
+    position: relative;
+    margin: auto;
+    width: clamp(350px, 30%, 420px);
+    height: clamp(400px, 50%, 450px);
+    background-color: #C7E8CA;
+    border-radius: 35px;
+    box-sizing: content-box;
+    box-shadow: 0 0 20px -8px #4a7d47;
+}
+
+.submitButton {
+    position: absolute;
+    bottom: 32px;
+    left: 5%;
+    width: 90%;
+    padding: 10px;
+    background-color: #4a7d47;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 18px;
+    box-shadow: 0 0 10px -5px #2D5C29;
+    transition: all 0.1s;
+}
+
+    .submitButton:hover {
+        bottom: 31px;
+        font-size: 20px;
+        background-color: #5D9C59;
+        transition: all 0.1s;
+        box-shadow: 0 0 20px -2px #2D5C29;
+    }
+
+h1 {
+    text-align: center;
+    padding-top: 24px;
+    font-family: 'Poppins';
+    padding-bottom: 15px;
+    color: #253e24;
+}
+
+.label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 18px;
+}
+
+.validation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 18px;
+    color: red;
+}
+
+.inputTextBox {
+    position: relative;
+    height: 180px;
+}
+
+
+
+
+
+.login-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+    border-radius: 10px;
+    width: 250px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid #4a7d47;
+    box-sizing: border-box;
+}
+
+    .login-input:focus {
+        outline: none;
+    }
+
+
+.inputTextBox + .inputTextBox {
+    margin-top: -100px;
+}
+
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+    .inputfile + label {
+        max-width: 80%;
+        font-size: 1.25rem;
+        font-weight: 700;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        cursor: pointer;
+        display: inline-block;
+        overflow: hidden;
+        padding: 0.625rem 1.25rem;
+    }
+
+.no-js .inputfile + label {
+    display: none;
+}
+
+.inputfile:focus + label,
+.inputfile.has-focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+
+.inputfile + label svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-top: -0.25em;
+    margin-right: 0.25em;
+}
+
+
+.inputfile-1 + label {
+    color: #f1e5e6;
+    background-color: #0A7311;
+    border-radius: 10px;
+    max-width: 250px;
+}
+
+    .inputfile-1:focus + label,
+    .inputfile-1.has-focus + label,
+    .inputfile-1 + label:hover {
+        background-color: #5D9C59;
+    }
+
+.allDiv {
+    margin-bottom: 20px;
+    background-color: #C7E8CA;
+    border-radius: 25px;
+    height: 75px;
 }
