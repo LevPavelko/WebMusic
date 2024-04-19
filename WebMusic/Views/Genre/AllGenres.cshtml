@@ -15,10 +15,10 @@
 
             </li>
             <li>
-                
-                    <a href="#" onclick="event.preventDefault(); document.getElementById('deleteForm_@item.Id').submit();" class="delete-button">Delete</a>
+
+                <a href="#" onclick="event.preventDefault(); document.getElementById('deleteForm_@item.Id').submit();" class="delete-button">@Resources.Resource.Delete</a>
                     <label>|</label>
-                    <a asp-action="EditGenre" asp-route-id="@item.Id" class="edit-button">Edit</a>
+                <a asp-action="EditGenre" asp-route-id="@item.Id" class="edit-button">@Resources.Resource.Edit</a>
                     <form id="deleteForm_@item.Id" asp-area="" asp-controller="Genre" asp-action="DeleteGenre" method="post" style="display: none;">
                         <input type="hidden" name="genreId" value="@item.Id" />
                     </form>

@@ -26,29 +26,29 @@
                         {
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">@Resources.Resource.Home</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Media" asp-action="CreateMedia">Create media</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Media" asp-action="CreateMedia">@Resources.Resource.CreateMedia</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Genre" asp-action="AllGenres">All Genres</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Genre" asp-action="AllGenres">@Resources.Resource.Genres</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Genre" asp-action="PostGenre">Add Genre</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Genre" asp-action="PostGenre">@Resources.Resource.AddGenre</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Executor" asp-action="AddExecutor">Add Exexcutor</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Executor" asp-action="AddExecutor">@Resources.Resource.AddExecutor</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Executor" asp-action="AllExecutors">All Exexcutors</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Executor" asp-action="AllExecutors">@Resources.Resource.Executors</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="AllUsers">Users</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="AllUsers">@Resources.Resource.Users</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout">@Resources.Resource.Login</a>
                             </li>
 
                             @* <li style="margin-left:auto;">
@@ -58,11 +58,26 @@
                               
                                 <img src="/images/4519678.png" width="25px" height="25px" />
                             </li>
+                            <div class="languages" style="margin-left: auto;">
+
+                                @using (Html.BeginForm("ChangeCulture", "Home"))
+                                {
+                                    <select name="lang" class="languagesSelect">
+                                        <option value="ru">Русский</option>
+                                        <option value="en">English</option>
+                                        <option value="uk">Українська</option>
+                                        <option value="de">Deutsch</option>
+
+                                    </select>
+                                    <input type="submit" name="submit" value="@Resources.Resource.ChooseLang">
+                                }
+                            </div>
+
                         }
                         else if(Context.Session.GetInt32("Status") == 2)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">@Resources.Resource.Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
@@ -71,12 +86,27 @@
 
                                 <img src="/images/4519678.png" width="25px" height="25px" />
                             </li>
+                            <div class="languages" style="margin-left: auto;">
+
+                                @using (Html.BeginForm("ChangeCulture", "Home"))
+                                {
+                                    <select name="lang" class="languagesSelect">
+                                        <option value="ru">Русский</option>
+                                        <option value="en">English</option>
+                                        <option value="uk">Українська</option>
+                                        <option value="de">Deutsch</option>
+
+                                    </select>
+                                    <input type="submit" name="submit" value="@Resources.Resource.ChooseLang">
+                                }
+                            </div>
+
                         }
 
                         else if (Context.Session.GetInt32("Status") == 1)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">@Resources.Resource.Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
@@ -85,21 +115,43 @@
 
                                 <img src="/images/4519678.png" width="25px" height="25px" />
                             </li>
+                            <div class="languages" style="margin-left: auto;">
+
+                                @using (Html.BeginForm("ChangeCulture", "Home"))
+                                {
+                                    <select name="lang" class="languagesSelect">
+                                        <option value="ru">Русский</option>
+                                        <option value="en">English</option>
+                                        <option value="uk">Українська</option>
+                                        <option value="de">Deutsch</option>
+
+                                    </select>
+                                    <input type="submit" name="submit" value="@Resources.Resource.ChooseLang">
+                                }
+                            </div>
+
                         }
                         else
                         {
 
                            
-                          @*   <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Register" asp-action="Index">Register</a>
-                            </li> *@
                          
-                            
                             <li class="nav-item ml-auto" style="margin-left: auto;">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Index">Login</a>
+                                @using (Html.BeginForm("ChangeCulture", "Home"))
+                                {
+                                    <select name="lang" class="languagesSelect">
+                                        <option value="ru">Русский</option>
+                                        <option value="en">English</option>
+                                        <option value="uk">Українська</option>
+                                        <option value="de">Deutsch</option>
+
+                                    </select>
+                                    <input type="submit" name="submit" value="@Resources.Resource.ChooseLang">
+                                }
+                                
                             </li>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Index">@Resources.Resource.Login</a>
                         }
-                       
                        
                     </ul>
                 </div>

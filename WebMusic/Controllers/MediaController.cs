@@ -4,9 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using WebMusic.BLL.DTO;
 using WebMusic.BLL.Interfaces;
 using WebMusic.DAL.Entities;
+using WebMusic.Filters;
 using WebMusic.Models;
 namespace WebMusic.Controllers
 {
+    [Culture]
     public class MediaController : Controller
     {
         IWebHostEnvironment _appEnvironment;

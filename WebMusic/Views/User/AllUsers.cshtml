@@ -10,9 +10,9 @@
     <table>
         <thead>
             <tr style="color: #253e24;">
-                <th>Login</th>
+                <th>@Resources.Resource.Login</th>
                 <th>Email</th>
-                <th>Status</th>
+                <th>@Resources.Resource.Status</th>
                 
             </tr>
         </thead>
@@ -33,7 +33,7 @@
                             <input type="hidden" asp-for="@item.Email" name="Email" />
 
                             <input type="number" id="userStatus_@item.Id" class="status" name="Status" value="@Html.DisplayFor(modelItem => item.Status)" style="width: 50px;" />
-                            <button type="button" class="changeStatusButton">Change Status</button>
+                            <button type="button" class="changeStatusButton">@Resources.Resource.ChangeStatus</button>
                         </form>
                     </td>
                 </tr>

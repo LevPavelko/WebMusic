@@ -2,9 +2,11 @@
 using WebMusic.BLL.DTO;
 using WebMusic.BLL.Interfaces;
 using WebMusic.BLL.Services;
+using WebMusic.Filters;
 
 namespace WebMusic.Controllers
 {
+    [Culture]
     public class ExecutorController : Controller
     {
         private readonly IExecutorService _executorService;

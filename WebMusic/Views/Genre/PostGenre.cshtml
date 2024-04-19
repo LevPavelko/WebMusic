@@ -7,18 +7,19 @@
 
 
 <div class="formDiv">
-    <h1>Add Genre</h1>
+    <h1>@Resources.Resource.AddGenre</h1>
     <form asp-action="PostGenre" method="post" enctype="multipart/form-data">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
         <div class="inputTextBox">
-            <label asp-for="Name" class="label"></label>
+            <label asp-for="Name" class="label">@Resources.Resource.Title</label>
             <input asp-for="Name" class="allInput" />
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
 
         <div class="form-group">
-            <input type="submit" value="Create" class="submitButton" />
+            <input type="submit" value="@Resources.Resource.Add" class="submitButton" />
         </div>
     </form>
  </div>
+<a class="label" style="color: white" asp-area="" asp-controller="Genre" asp-action="AllGenres">@Resources.Resource.BackToList</a>

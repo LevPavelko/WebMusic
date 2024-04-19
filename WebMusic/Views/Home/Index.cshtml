@@ -23,9 +23,9 @@
         <div class="action-links">
             @if (Context.Session.GetInt32("Status") == 3)
             {
-                <a href="#" onclick="event.preventDefault(); document.getElementById('deleteForm_@item.Id').submit();" class="delete-button">Delete</a>
+                <a href="#" onclick="event.preventDefault(); document.getElementById('deleteForm_@item.Id').submit();" class="delete-button">@Resources.Resource.Delete</a>
                 <label>|</label>
-                <a asp-controller="Media" asp-action="EditMedia" asp-route-id="@item.Id" class="edit-button">Edit</a>
+                <a asp-controller="Media" asp-action="EditMedia" asp-route-id="@item.Id" class="edit-button">@Resources.Resource.Edit</a>
                 <form id="deleteForm_@item.Id" asp-area="" asp-controller="Media" asp-action="DeleteSong" method="post" style="display: none;">
                     <input type="hidden" name="songId" value="@item.Id" />
                 </form>

@@ -333,3 +333,11 @@ td {
     .status:focus {
         outline: none;
     }
+
+languagesSelect {
+    width: 150px;
+}
+languages {
+   background-color:red;
+   
+}

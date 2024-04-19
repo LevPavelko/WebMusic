@@ -1,10 +1,12 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using WebMusic.BLL.Interfaces;
+using WebMusic.Filters;
 using WebMusic.Models;
 
 namespace WebMusic.Controllers
 {
+    [Culture]
     public class HomeController : Controller
     {
         private readonly IUserService _userService;
@@ -41,9 +43,25 @@ namespace WebMusic.Controllers
 
         public IActionResult Privacy()
         {
+            HttpContext.Session.SetString("path", Request.Path);
             return View();
         }
+        public ActionResult ChangeCulture(string lang)
+        {
+            string? returnUrl =  "/Home/Index";
 
-       
+            // Список культур
+            List<string> cultures = new List<string>() { "ru", "en", "uk", "de"};
+            if (!cultures.Contains(lang))
+            {
+                lang = "ru";
+            }
+
+            CookieOptions option = new CookieOptions();
+            option.Expires = DateTime.Now.AddDays(10); // срок хранения куки - 10 дней
+            Response.Cookies.Append("lang", lang, option); // создание куки
+            return Redirect(returnUrl);
+        }
+
     }
 }

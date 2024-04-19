@@ -7,24 +7,24 @@
 
 
 <div class="formDiv">
-    <h1>Add Song</h1>
+    <h1>@Resources.Resource.CreateMedia</h1>
     <form asp-action="Create" method="post" enctype="multipart/form-data">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
 
         <div class="inputTextBox">
-            <label asp-for="Title" class="label"></label>
+            <label asp-for="Title" class="label">@Resources.Resource.Title</label>
             <input asp-for="Title" class="allInput" />
             <span asp-validation-for="Title" class="validation"></span>
         </div>
         <div class="inputTextBox">
-            <label class="label">Genre</label>
+            <label class="label">@Resources.Resource.Genre</label>
 
             <select asp-for="id_Genre" class="allInput" asp-items="ViewBag.ListGenre as SelectList"></select>
 
         </div>
         <div class="inputTextBox">
-            <label class="label">Executor</label>
+            <label class="label">@Resources.Resource.Executor</label>
 
             <select asp-for="id_Executor" class="allInput" asp-items="ViewBag.ListExecutor as SelectList"></select>
         </div>
@@ -32,7 +32,7 @@
         <div class="inputTextBox">
            
          
-            <label asp-for="Path" class="label"></label>
+            <label asp-for="Path" class="label">@Resources.Resource.Song</label>
             <div class="content">
 
                 <div class="box">
@@ -45,7 +45,7 @@
         </div>
 
         <div class="inputTextBox">
-            <input type="submit" value="Create" class="submitButton" />
+            <input type="submit" value="@Resources.Resource.CreateMedia" class="submitButton" />
         </div>
     </form>
 

@@ -7,10 +7,12 @@ using WebMusic.BLL.DTO;
 using WebMusic.DAL.Entities;
 using WebMusic.Models;
 using WebMusic.DAL.Repositories;
+using WebMusic.Filters;
 
 
 namespace WebMusic.Controllers
 {
+    [Culture]
     public class RegisterController : Controller
     {
         private readonly IUserService _userService;
