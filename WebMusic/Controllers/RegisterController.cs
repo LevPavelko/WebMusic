@@ -45,6 +45,12 @@ namespace WebMusic.Controllers
                     ModelState.AddModelError("Login", "Пользователь с таким логином существует");
                     return View("Index", reg);
                 }
+                UserDTO userEmail = await _userService.GetUserByEmail(reg.Email);
+                if (reg.Email == userEmail.Email)
+                {
+                    ModelState.AddModelError("Email", "Пользователь с таким email уже существует");
+                    return View("Index", reg);
+                }
                 if (reg.Password.Length < 8)
                 {
                     ModelState.AddModelError("Password", "Пароль должен содержать 8 символов");

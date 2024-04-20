@@ -13,7 +13,8 @@ namespace WebMusic.BLL.Interfaces
         Task UpdateUser(UserDTO userDTO);
         Task DeleteUser(int id);
         Task<UserDTO> GetUser(int id);
-        Task<UserDTO> GetUserByLogin(string login);
+        Task<UserDTO> GetUserByLogin(string login); 
+        Task<UserDTO> GetUserByEmail(string email);
         Task<IEnumerable<UserDTO>> GetUsers();
     }
 }

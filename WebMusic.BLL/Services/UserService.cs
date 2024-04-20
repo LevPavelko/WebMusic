@@ -96,6 +96,29 @@ namespace WebMusic.BLL.Services
 
             };
         }
+        public async Task<UserDTO> GetUserByEmail(string email)
+        {
+            var user = await Database.user.GetByEmail(email);
+            if (user == null)
+            {
+                UserDTO nullUser = new UserDTO();
+                return nullUser;
+            }
+
+            return new UserDTO
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Password = user.Password,
+                Salt = user.Salt,
+                Login = user.Login,
+                Email = user.Email,
+                Status = user.Status
+
+
+            };
+        }
         public async Task<IEnumerable<UserDTO>> GetUsers()
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Users, UserDTO>()).CreateMapper();
