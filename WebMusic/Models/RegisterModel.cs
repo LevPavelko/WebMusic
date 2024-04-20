@@ -17,12 +17,12 @@ namespace WebMusic.Models
         public string? Login { get; set; }
 
         [Required(ErrorMessage = "Поле должно быть установлено")]
-        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage = "Некорректный адрес")]
-        
+        [RegularExpression(@"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$", ErrorMessage = "Не корректно веден Email адрес")]
         public string? Email { get; set; }
 
         [Required(ErrorMessage = "Поле должно быть установлено")]
         [DataType(DataType.Password)]
+        
         public string? Password { get; set; }
 
         [Required(ErrorMessage = "Поле должно быть установлено")]

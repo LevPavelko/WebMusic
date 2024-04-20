@@ -77,7 +77,11 @@ namespace WebMusic.BLL.Services
         {
             var user = await Database.user.GetByLogin(login);
             if (user == null)
-                throw new ValidationException("Wrong user!", "");
+            {
+                UserDTO nullUser = new UserDTO();
+                return nullUser;
+            }
+
             return new UserDTO
             {
                 Id = user.Id,
