@@ -1,1 +1,24 @@
-﻿
+﻿<div class="formDiv">
+	<h1 style="font-size: 38px;">User Profile</h1>
+	<h3>Language</h3>
+    
+
+        @using (Html.BeginForm("ChangeCulture", "Home"))
+        {
+
+          
+            <select name="lang" class="allInput" style="margin-top: 25px;">
+                <option value="ru">Русский</option>
+                <option value="en">English</option>
+                <option value="uk">Українська</option>
+                <option value="de">Deutsch</option>
+
+            </select>
+            <input type="submit" name="submit" value="@Resources.Resource.ChooseLang" class="langChange">
+       
+        }
+
+
+    <a class="logout" asp-area="" asp-controller="Home" asp-action="Logout">@Resources.Resource.Logout</a>
+
+</div>

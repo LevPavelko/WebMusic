@@ -27,6 +27,10 @@ namespace WebMusic.Controllers
         {
             return View(await _userService.GetUsers());
         }
+        public async Task<IActionResult> userProfile()
+        {
+            return View();
+        }
         public async Task <IActionResult> ChangeStatus(UserDTO userDTO)
         {
             if (ModelState.IsValid)

@@ -51,27 +51,12 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout">@Resources.Resource.Logout</a>
                             </li>
 
-                            @* <li style="margin-left:auto;">
-                                <h5>Login</h5>
-                            </li> *@
+                          
                             <li style="margin-left: auto; margin-top: 5px;">
-                              
-                                <img src="/images/4519678.png" width="25px" height="25px" />
+                                <a asp-area="" asp-controller="User" asp-action="userProfile"> <img src="/images/4519678.png" width="25px" height="25px" /></a>
+                               
                             </li>
-                            <div class="languages" style="margin-left: auto;">
-
-                                @using (Html.BeginForm("ChangeCulture", "Home"))
-                                {
-                                    <select name="lang" class="languagesSelect">
-                                        <option value="ru">Русский</option>
-                                        <option value="en">English</option>
-                                        <option value="uk">Українська</option>
-                                        <option value="de">Deutsch</option>
-
-                                    </select>
-                                    <input type="submit" name="submit" value="@Resources.Resource.ChooseLang">
-                                }
-                            </div>
+                            
 
                         }
                         else if(Context.Session.GetInt32("Status") == 2)
@@ -83,23 +68,10 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
                             </li>
                             <li style="margin-left: auto; margin-top: 5px;">
+                                <a asp-area="" asp-controller="User" asp-action="userProfile"> <img src="/images/4519678.png" width="25px" height="25px" /></a>
 
-                                <img src="/images/4519678.png" width="25px" height="25px" />
                             </li>
-                            <div class="languages" style="margin-left: auto;">
-
-                                @using (Html.BeginForm("ChangeCulture", "Home"))
-                                {
-                                    <select name="lang" class="languagesSelect">
-                                        <option value="ru">Русский</option>
-                                        <option value="en">English</option>
-                                        <option value="uk">Українська</option>
-                                        <option value="de">Deutsch</option>
-
-                                    </select>
-                                    <input type="submit" name="submit" value="@Resources.Resource.ChooseLang">
-                                }
-                            </div>
+                           
 
                         }
 
@@ -112,45 +84,15 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
                             </li>
                             <li style="margin-left: auto; margin-top: 5px;">
+                                <a asp-area="" asp-controller="User" asp-action="userProfile"> <img src="/images/4519678.png" width="25px" height="25px" /></a>
 
-                                <img src="/images/4519678.png" width="25px" height="25px" />
                             </li>
-                            <div class="languages" style="margin-left: auto;">
-
-                                @using (Html.BeginForm("ChangeCulture", "Home"))
-                                {
-                                    <select name="lang" class="languagesSelect">
-                                        <option value="ru">Русский</option>
-                                        <option value="en">English</option>
-                                        <option value="uk">Українська</option>
-                                        <option value="de">Deutsch</option>
-
-                                    </select>
-                                    <input type="submit" name="submit" value="@Resources.Resource.ChooseLang">
-                                }
-                            </div>
+                           
 
                         }
                         else
                         {
-
-                           
-                         
-                            <li class="nav-item ml-auto" style="margin-left: auto;">
-                                @using (Html.BeginForm("ChangeCulture", "Home"))
-                                {
-                                    <select name="lang" class="languagesSelect">
-                                        <option value="ru">Русский</option>
-                                        <option value="en">English</option>
-                                        <option value="uk">Українська</option>
-                                        <option value="de">Deutsch</option>
-
-                                    </select>
-                                    <input type="submit" name="submit" value="@Resources.Resource.ChooseLang">
-                                }
-                                
-                            </li>
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Index">@Resources.Resource.Login</a>
+                            <a class="nav-link text-dark" style="margin-left: auto;" asp-area="" asp-controller="Login" asp-action="Index">@Resources.Resource.Login</a>
                         }
                        
                     </ul>
