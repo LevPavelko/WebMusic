@@ -14,6 +14,7 @@ namespace WebMusic.BLL.Interfaces
         Task DeleteGenre(int id);
         Task<GenreDTO> GetGenre(int id);
         Task<GenreDTO> GetGenreByName(string name);
+        Task<List<GenreDTO>> Searching(string name);
         Task<IEnumerable<GenreDTO>> GetGenres();
     }
 }

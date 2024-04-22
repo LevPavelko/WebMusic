@@ -201,6 +201,9 @@
   <data name="Register" xml:space="preserve">
     <value>Registrieren</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Suchen</value>
+  </data>
   <data name="Song" xml:space="preserve">
     <value>Lied</value>
   </data>

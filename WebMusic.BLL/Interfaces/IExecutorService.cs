@@ -14,6 +14,7 @@ namespace WebMusic.BLL.Interfaces
         Task DeleteExecutor(int id);
         Task<ExecutorDTO> GetExecutor(int id);
         Task<ExecutorDTO> GetExecutorByName(string name);
+        Task<List<ExecutorDTO>> Searching(string name);
         Task<IEnumerable<ExecutorDTO>> GetExecutors();
     }
 }

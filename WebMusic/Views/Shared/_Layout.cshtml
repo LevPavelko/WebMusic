@@ -47,8 +47,10 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="AllUsers">@Resources.Resource.Users</a>
                             </li>
+                         
+
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout">@Resources.Resource.Logout</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Media" asp-action="Searching">@Resources.Resource.Search</a>
                             </li>
 
                           
@@ -65,7 +67,10 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">@Resources.Resource.Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Media" asp-action="CreateMedia">@Resources.Resource.CreateMedia</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Media" asp-action="Searching">@Resources.Resource.Search</a>
                             </li>
                             <li style="margin-left: auto; margin-top: 5px;">
                                 <a asp-area="" asp-controller="User" asp-action="userProfile"> <img src="/images/4519678.png" width="25px" height="25px" /></a>
@@ -81,7 +86,7 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">@Resources.Resource.Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Media" asp-action="Searching">@Resources.Resource.Search</a>
                             </li>
                             <li style="margin-left: auto; margin-top: 5px;">
                                 <a asp-area="" asp-controller="User" asp-action="userProfile"> <img src="/images/4519678.png" width="25px" height="25px" /></a>
@@ -92,6 +97,9 @@
                         }
                         else
                         {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Media" asp-action="Searching">@Resources.Resource.Search</a>
+                            </li>
                             <a class="nav-link text-dark" style="margin-left: auto;" asp-area="" asp-controller="Login" asp-action="Index">@Resources.Resource.Login</a>
                         }
                        

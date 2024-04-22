@@ -177,5 +177,16 @@ namespace WebMusic.Controllers
                 return NotFound();
             }
         }
+
+        public async  Task<IActionResult> Searching()
+        {
+            return View();  
+        }
+        [HttpPost]
+        public async Task<IActionResult> Searching(string getSong)
+        {
+            var songs = await _mediaService.Searching(getSong);
+            return View(songs);
+        }
     } 
 };

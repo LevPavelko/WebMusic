@@ -1,0 +1,39 @@
+﻿@model List<WebMusic.BLL.DTO.MediaDTO>
+<div class="formDiv">
+    <h1>@Resources.Resource.Search</h1>
+    <form method="post" asp-controller="Media" asp-action="Searching">
+        <div>
+            <input name="getSong" class="allInput" />
+            <input type="submit" class="langChange" value="@Resources.Resource.Search" />
+        </div>
+    </form>
+</div>
+
+
+@if (Model != null && Model.Any())
+{
+    <div>
+        <ul>
+            @foreach (var item in Model)
+            {
+               
+                    <div class="audio-player">
+                        <ul>
+                            <li style="font-size: 26px;">@Html.DisplayFor(modelItem => item.Title)</li>
+                            <li style="font-size: 22px;">@Html.DisplayFor(modelItem => item.Executor)</li>
+                        </ul>
+                        <div class="audio-container">
+                            <audio controls>
+                                <source src="@Html.DisplayFor(modelItem => item.Path)">
+                            </audio>
+                            <a href="@Html.DisplayFor(modelItem => item.Path)" class="download-button" download>
+                                <img src="/images/222.png" width="15px" height="15px" />
+                            </a>
+                        </div>
+
+                    </div>
+                
+            }
+        </ul>
+    </div>
+}

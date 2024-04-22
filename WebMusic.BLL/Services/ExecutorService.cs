@@ -14,10 +14,12 @@ namespace WebMusic.BLL.Services
 {
     public class ExecutorService : IExecutorService
     {
+       
         IUnitOfWork Database { get; set; }
         public ExecutorService(IUnitOfWork uow)
         {
-            Database = uow;
+            Database = uow; 
+          
         }
         public async Task CreateExecutor(ExecutorDTO executorDTO) 
         {
@@ -74,6 +76,22 @@ namespace WebMusic.BLL.Services
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Executor, ExecutorDTO>()).CreateMapper();
             return mapper.Map<IEnumerable<Executor>, IEnumerable<ExecutorDTO>>(await Database.executor.GetAll());
+        }
+        public async Task<List<ExecutorDTO>> Searching(string name)
+        {
+            var author = await Database.executor.Search(name);
+            if (author == null)
+                throw new ValidationException("Wrong executor!", "");
+            var authorDTOs = author.Select(a => new ExecutorDTO
+            {
+                Id = a.Id,
+                Name = a.Name
+                
+            }).ToList();
+
+            return authorDTOs;
+
+
         }
     }
 }

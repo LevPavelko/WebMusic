@@ -48,6 +48,12 @@ namespace WebMusic.DAL.Repositories
         {
             Media? media = await db.media.FirstOrDefaultAsync(g => g.Title == name);
             return media;
+
+        }
+        public async Task<List<Media>> Search(string name)
+        {
+            return await db.media.Where(e => e.Title.Contains(name)).ToListAsync();
+
         }
     }
 }

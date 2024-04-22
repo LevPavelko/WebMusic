@@ -35,7 +35,7 @@ namespace WebMusic.Controllers
         {
             if (ModelState.IsValid)
             {
-                _userService?.UpdateUser(userDTO);
+                 await _userService.UpdateUser(userDTO);
 
 
                 return RedirectToAction("Index", "Home");
