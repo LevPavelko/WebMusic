@@ -6,9 +6,11 @@ using System.Text;
 using WebMusic.BLL.Interfaces;
 using WebMusic.DAL.Entities;
 using Microsoft.AspNetCore.Http;
+using WebMusic.Filters;
 
 namespace WebMusic.Controllers
 {
+    [Culture]
     public class LoginController : Controller
     {
         private readonly IUserService _userService;

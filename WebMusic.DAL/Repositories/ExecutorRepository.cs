@@ -51,5 +51,10 @@ namespace WebMusic.DAL.Repositories
             Executor? executor = await db.executor.FirstOrDefaultAsync(g => g.Name == name);
             return executor;
         }
+        public async Task<List<Executor>> Search(string name)
+        {
+            return await db.executor.Where(e => e.Name.Contains(name)).ToListAsync();
+
+        }
     }
 }

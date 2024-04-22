@@ -2,9 +2,11 @@
 using WebMusic.BLL.DTO;
 using WebMusic.BLL.Interfaces;
 using WebMusic.BLL.Services;
+using WebMusic.Filters;
 
 namespace WebMusic.Controllers
 {
+    [Culture]
     public class UserController : Controller
     {
         private readonly IMediaService _mediaService;
@@ -25,11 +27,15 @@ namespace WebMusic.Controllers
         {
             return View(await _userService.GetUsers());
         }
+        public async Task<IActionResult> userProfile()
+        {
+            return View();
+        }
         public async Task <IActionResult> ChangeStatus(UserDTO userDTO)
         {
             if (ModelState.IsValid)
             {
-                _userService?.UpdateUser(userDTO);
+                 await _userService.UpdateUser(userDTO);
 
 
                 return RedirectToAction("Index", "Home");

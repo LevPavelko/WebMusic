@@ -7,10 +7,13 @@ using WebMusic.BLL.DTO;
 using WebMusic.DAL.Entities;
 using WebMusic.Models;
 using WebMusic.DAL.Repositories;
+using WebMusic.Filters;
+using WebMusic.BLL.Services;
 
 
 namespace WebMusic.Controllers
 {
+    [Culture]
     public class RegisterController : Controller
     {
         private readonly IUserService _userService;
@@ -32,7 +35,32 @@ namespace WebMusic.Controllers
             {
                 UserDTO user = new UserDTO();
                 if (reg.Login == "admin")
+                {
                     ModelState.AddModelError("Login", "admin - запрещенное имя");
+                    return View("Index", reg);
+                }
+                UserDTO userLogin = await _userService.GetUserByLogin(reg.Login);
+                if(reg.Login == userLogin.Login)
+                {
+                    ModelState.AddModelError("Login", "Пользователь с таким логином существует");
+                    return View("Index", reg);
+                }
+                UserDTO userEmail = await _userService.GetUserByEmail(reg.Email);
+                if (reg.Email == userEmail.Email)
+                {
+                    ModelState.AddModelError("Email", "Пользователь с таким email уже существует");
+                    return View("Index", reg);
+                }
+                if (reg.Password.Length < 8)
+                {
+                    ModelState.AddModelError("Password", "Пароль должен содержать 8 символов");
+                    return View("Index", reg);
+                }
+                else if (!reg.Password.Any(char.IsDigit))
+                {
+                    ModelState.AddModelError("Password", "Пароль должен содержать хотя бы одну цифру");
+                    return View("Index", reg);
+                }
                 user.FirstName = reg.FirstName;
                 user.LastName = reg.LastName;
                 user.Login = reg.Login;

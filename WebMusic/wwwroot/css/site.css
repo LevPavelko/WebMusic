@@ -9,12 +9,12 @@ html {
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 /*body {
@@ -22,7 +22,6 @@ html {
 }*/
 
 body {
-    margin-bottom: 60px;
     background: #2C3646;
     min-width: 100vh;
     background-size: cover;
@@ -30,11 +29,14 @@ body {
     height: 50% !important;
 }
 
+
 .audio-player {
-    margin-bottom: 20px;
+    flex: 0 0 calc(33.3% - 20px); /* Занимаем половину ширины контейнера и вычитаем отступы */
+    margin: 10px; /* Добавляем отступы вокруг каждой песни */
     background-color: #C7E8CA;
     border-radius: 25px;
-    height: 170px;
+    box-sizing: border-box; /* Учитываем padding и border в размере элемента */
+    
 }
 
     .audio-player audio {
@@ -110,6 +112,7 @@ li {
 
 * {
     font-family: 'Poppins';
+  
 }
 
 
@@ -154,6 +157,8 @@ h1 {
     font-family: 'Poppins';
     padding-bottom: 15px;
     color: #253e24;
+    font-weight: revert;
+
 }
 
 .label {
@@ -333,3 +338,71 @@ td {
     .status:focus {
         outline: none;
     }
+
+languagesSelect {
+    width: 150px;
+}
+languages {
+   background-color:red;
+   
+}
+.two-columns {
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+h3{ 
+    font-size: 34px;
+    text-align: center;
+}
+.langChange {
+    position: relative;
+    bottom: 32px;
+    left: 5%;
+    width: 90%;
+    padding: 10px;
+    background-color: #4a7d47;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 18px;
+    box-shadow: 0 0 10px -5px #2D5C29;
+    transition: all 0.1s;
+    margin-top: 55px;
+}
+    .langChange:hover {
+        bottom: 31px;
+        font-size: 20px;
+        background-color: #5D9C59;
+        transition: all 0.1s;
+        box-shadow: 0 0 20px -2px #2D5C29;
+    }
+
+.logout {
+    position: absolute;
+    bottom: -60px;
+    left: 5%;
+    width: 90%;
+    padding: 10px;
+    background-color: #BD0D10;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 18px;
+    box-shadow: 0 0 10px -5px #2D5C29;
+    transition: all 0.1s;
+    margin-top: 100px;
+    
+}
+
+    .logout:hover {
+        color: white;
+       
+        font-size: 20px;
+        background-color: #EB1114;
+        transition: all 0.1s;
+        box-shadow: 0 0 20px -2px #2D5C29;
+    }
+

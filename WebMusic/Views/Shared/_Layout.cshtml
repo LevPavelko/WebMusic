@@ -26,87 +26,89 @@
                         {
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">@Resources.Resource.Home</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Media" asp-action="CreateMedia">Create media</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Media" asp-action="CreateMedia">@Resources.Resource.CreateMedia</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Genre" asp-action="AllGenres">All Genres</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Genre" asp-action="AllGenres">@Resources.Resource.Genres</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Genre" asp-action="PostGenre">Add Genre</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Genre" asp-action="PostGenre">@Resources.Resource.AddGenre</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Executor" asp-action="AddExecutor">Add Exexcutor</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Executor" asp-action="AddExecutor">@Resources.Resource.AddExecutor</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Executor" asp-action="AllExecutors">All Exexcutors</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Executor" asp-action="AllExecutors">@Resources.Resource.Executors</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="AllUsers">Users</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="AllUsers">@Resources.Resource.Users</a>
                             </li>
+                         
+
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Media" asp-action="Searching">@Resources.Resource.Search</a>
                             </li>
 
-                            @* <li style="margin-left:auto;">
-                                <h5>Login</h5>
-                            </li> *@
+                          
                             <li style="margin-left: auto; margin-top: 5px;">
-                              
-                                <img src="/images/4519678.png" width="25px" height="25px" />
+                                <a asp-area="" asp-controller="User" asp-action="userProfile"> <img src="/images/4519678.png" width="25px" height="25px" /></a>
+                               
                             </li>
+                            
+
                         }
                         else if(Context.Session.GetInt32("Status") == 2)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">@Resources.Resource.Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Media" asp-action="CreateMedia">@Resources.Resource.CreateMedia</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Media" asp-action="Searching">@Resources.Resource.Search</a>
                             </li>
                             <li style="margin-left: auto; margin-top: 5px;">
+                                <a asp-area="" asp-controller="User" asp-action="userProfile"> <img src="/images/4519678.png" width="25px" height="25px" /></a>
 
-                                <img src="/images/4519678.png" width="25px" height="25px" />
                             </li>
+                           
+
                         }
 
                         else if (Context.Session.GetInt32("Status") == 1)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">@Resources.Resource.Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Media" asp-action="Searching">@Resources.Resource.Search</a>
                             </li>
                             <li style="margin-left: auto; margin-top: 5px;">
+                                <a asp-area="" asp-controller="User" asp-action="userProfile"> <img src="/images/4519678.png" width="25px" height="25px" /></a>
 
-                                <img src="/images/4519678.png" width="25px" height="25px" />
                             </li>
+                           
+
                         }
                         else
                         {
-
-                           
-                          @*   <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Register" asp-action="Index">Register</a>
-                            </li> *@
-                         
-                            
-                            <li class="nav-item ml-auto" style="margin-left: auto;">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Index">Login</a>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Media" asp-action="Searching">@Resources.Resource.Search</a>
                             </li>
+                            <a class="nav-link text-dark" style="margin-left: auto;" asp-area="" asp-controller="Login" asp-action="Index">@Resources.Resource.Login</a>
                         }
-                       
                        
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div style="margin:20px">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>

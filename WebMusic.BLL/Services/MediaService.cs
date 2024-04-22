@@ -15,9 +15,11 @@ namespace WebMusic.BLL.Services
 {
     public class MediaService : IMediaService
     {
+        
         IUnitOfWork Database { get; set; }
         public MediaService(IUnitOfWork uow)
         {
+            
             Database = uow;
         }
         public async Task CreateMedia(MediaDTO mediaDTO)
@@ -104,6 +106,28 @@ namespace WebMusic.BLL.Services
             });
             var mapper = new Mapper(config);
             return mapper.Map<IEnumerable<Media>, IEnumerable<MediaDTO>>(await Database.media.GetAll());
+        }
+        public async Task<List<MediaDTO>> Searching(string name)
+        {
+            var song = await Database.media.Search(name);
+            if (song == null)
+                throw new ValidationException("Wrong executor!", "");
+            var mediaDTOs = song.Select(a => new MediaDTO
+            {
+                Id = a.Id,
+                Title = a.Title,
+                id_Executor = a.id_Executor,
+                Executor = a.Executor?.Name,
+                id_Genre = a.id_Genre,
+                Genre = a.Genre?.Name,
+                Path = a.Path,
+                Id_User = a.Id_User
+
+            }).ToList();
+          
+
+            return mediaDTOs;
+
         }
     }
 }

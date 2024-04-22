@@ -77,7 +77,34 @@ namespace WebMusic.BLL.Services
         {
             var user = await Database.user.GetByLogin(login);
             if (user == null)
-                throw new ValidationException("Wrong user!", "");
+            {
+                UserDTO nullUser = new UserDTO();
+                return nullUser;
+            }
+
+            return new UserDTO
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Password = user.Password,
+                Salt = user.Salt,
+                Login = user.Login,
+                Email = user.Email,
+                Status = user.Status
+
+
+            };
+        }
+        public async Task<UserDTO> GetUserByEmail(string email)
+        {
+            var user = await Database.user.GetByEmail(email);
+            if (user == null)
+            {
+                UserDTO nullUser = new UserDTO();
+                return nullUser;
+            }
+
             return new UserDTO
             {
                 Id = user.Id,

@@ -14,9 +14,11 @@ namespace WebMusic.BLL.Services
 {
     public class GenreService : IGenreService
     {
+       
         IUnitOfWork Database { get; set; }
         public GenreService(IUnitOfWork uow)
         {
+           
             Database = uow;
         }
         public async Task CreateGenre(GenreDTO genreDTO)
@@ -74,6 +76,20 @@ namespace WebMusic.BLL.Services
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Genre, GenreDTO>()).CreateMapper();
             return mapper.Map<IEnumerable<Genre>, IEnumerable<GenreDTO>>(await Database.genre.GetAll());
+        }
+        public async Task<List<GenreDTO>> Searching(string name)
+        {
+            var genre = await Database.genre.Search(name);
+            if (genre == null)
+                throw new ValidationException("Wrong executor!", "");
+            var genreDTOs = genre.Select(a => new GenreDTO
+            {
+                Id = a.Id,
+                Name = a.Name
+
+            }).ToList();
+            return genreDTOs;
+
         }
     }
 }

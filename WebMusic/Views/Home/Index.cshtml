@@ -1,35 +1,39 @@
-﻿@model IEnumerable<WebMusic.BLL.DTO.MediaDTO>
+﻿@model WebMusic.Models.IndexViewModel
 @{
+
     ViewData["Title"] = "fff";
 }
 
-@foreach (var item in Model)
-{
-    <div class="audio-player">
-        <ul>
-            <li style="font-size: 26px;">@Html.DisplayFor(modelItem => item.Title)</li>
-            <li style="font-size: 22px;">@Html.DisplayFor(modelItem => item.Executor)</li>
-        </ul>
-        <div class="audio-container">
-            <audio controls>
-                <source src="@Html.DisplayFor(modelItem => item.Path)">
-            </audio>
-            <a href="@Html.DisplayFor(modelItem => item.Path)" class="download-button" download>
-                <img src="/images/222.png" width="15px" height="15px" />
-            </a>
-        </div>
+<div class="two-columns">
+    @foreach (var item in Model.Songs)
+    {
+        <div class="audio-player">
+            <ul>
+                <li style="font-size: 26px;">@Html.DisplayFor(modelItem => item.Title)</li>
+                <li style="font-size: 22px;">@Html.DisplayFor(modelItem => item.Executor)</li>
+            </ul>
+            <div class="audio-container">
+                <audio controls>
+                    <source src="@Html.DisplayFor(modelItem => item.Path)">
+                </audio>
+                <a href="@Html.DisplayFor(modelItem => item.Path)" class="download-button" download>
+                    <img src="/images/222.png" width="15px" height="15px" />
+                </a>
+            </div>
 
-        
-        <div class="action-links">
-            @if (Context.Session.GetInt32("Status") == 3)
-            {
-                <a href="#" onclick="event.preventDefault(); document.getElementById('deleteForm_@item.Id').submit();" class="delete-button">Delete</a>
-                <label>|</label>
-                <a asp-controller="Media" asp-action="EditMedia" asp-route-id="@item.Id" class="edit-button">Edit</a>
-                <form id="deleteForm_@item.Id" asp-area="" asp-controller="Media" asp-action="DeleteSong" method="post" style="display: none;">
-                    <input type="hidden" name="songId" value="@item.Id" />
-                </form>
-            }
+            <div class="action-links">
+                @if (Context.Session.GetInt32("Status") == 3)
+                {
+                    <a href="#" onclick="event.preventDefault(); document.getElementById('deleteForm_@item.Id').submit();" class="delete-button">@Resources.Resource.Delete</a>
+                    <label>|</label>
+                    <a asp-controller="Media" asp-action="EditMedia" asp-route-id="@item.Id" class="edit-button">@Resources.Resource.Edit</a>
+                    <form id="deleteForm_@item.Id" asp-area="" asp-controller="Media" asp-action="DeleteSong" method="post" style="display: none;">
+                        <input type="hidden" name="songId" value="@item.Id" />
+                    </form>
+                }
+            </div>
         </div>
-    </div>
-}
+    }
+</div>
+
+<page-link page-model="Model.PageViewModel" page-action="Index"></page-link>

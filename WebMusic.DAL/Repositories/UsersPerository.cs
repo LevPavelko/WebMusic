@@ -51,5 +51,10 @@ namespace WebMusic.DAL.Repositories
             Users? user = await db.users.FirstOrDefaultAsync(l=> l.Login == login);
             return user;
         }
+        public async Task<Users> GetByEmail(string email)
+        {
+            Users? user = await db.users.FirstOrDefaultAsync(l => l.Email == email);
+            return user;
+        }
     }
 }

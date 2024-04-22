@@ -7,22 +7,22 @@
 
 
 <div class="formDiv">
-    <h1>Register</h1>
+    <h1>@Resources.Resource.Register</h1>
     <form asp-action="Register">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="inputTextBox">
-            <label asp-for="FirstName" class="label"></label>
+            <label asp-for="FirstName" class="label">@Resources.Resource.FirstName</label>
             <input asp-for="FirstName" class="allInput" />
             <span asp-validation-for="FirstName" class="validation"></span>
 
         </div>
         <div class="inputTextBox">
-            <label asp-for="LastName" class="label"></label>
+            <label asp-for="LastName" class="label">@Resources.Resource.LastName</label>
             <input asp-for="LastName" class="allInput" />
             <span asp-validation-for="LastName" class="validation"></span>
         </div>
         <div class="inputTextBox">
-            <label asp-for="Login" class="label"></label>
+            <label asp-for="Login" class="label">@Resources.Resource.Login</label>
             <input asp-for="Login" class="allInput" />
             <span asp-validation-for="Login" class="validation"></span>
         </div>
@@ -32,21 +32,21 @@
             <span asp-validation-for="Email" class="validation"></span>
         </div>
         <div class="inputTextBox">
-            <label asp-for="Password" class="label"></label>
+            <label asp-for="Password" class="label">@Resources.Resource.Password</label>
             <input asp-for="Password" class="allInput" />
             <span asp-validation-for="Password" class="validation"></span>
         </div>
         <div class="inputTextBox">
-            <label asp-for="PasswordConfirm" class="label"></label>
+            <label asp-for="PasswordConfirm" class="label">@Resources.Resource.PasswordConfirm</label>
             <input asp-for="PasswordConfirm" class="allInput" />
             <span asp-validation-for="PasswordConfirm" class="validation"></span>
         </div>
         <div class="form-group">
-            <input type="submit" value="Register" class="submitButton" />
+            <input type="submit" value="@Resources.Resource.Register" class="submitButton" />
         </div>
 
     </form>
 
 </div>
-<label class="label" style="color: white">Уже есть аккаунт?</label>
-<a class="label" style="color: white" asp-area="" asp-controller="Login" asp-action="Index">Войти</a>
+<label class="label" style="color: white">@Resources.Resource.HaveAccount</label>
+<a class="label" style="color: white" asp-area="" asp-controller="Login" asp-action="Index">@Resources.Resource.Login</a>

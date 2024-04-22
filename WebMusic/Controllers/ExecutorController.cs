@@ -2,9 +2,11 @@
 using WebMusic.BLL.DTO;
 using WebMusic.BLL.Interfaces;
 using WebMusic.BLL.Services;
+using WebMusic.Filters;
 
 namespace WebMusic.Controllers
 {
+    [Culture]
     public class ExecutorController : Controller
     {
         private readonly IExecutorService _executorService;
@@ -45,8 +47,8 @@ namespace WebMusic.Controllers
 
                 //return RedirectToAction("Index");
 
-                return View("~/Views/Home/Index.cshtml", await _mediaService.GetMedias());
-               
+                return RedirectToAction("Index", "Home");
+
             }
             return View("AddExecutor", e);
         }
@@ -71,7 +73,7 @@ namespace WebMusic.Controllers
                 await _executorService.UpdateExecutor(e);
 
 
-                return RedirectToAction("Index", "Home", await _mediaService.GetMedias());
+                return RedirectToAction("Index", "Home");
             }
             return View("EditExecutor", e);
 
