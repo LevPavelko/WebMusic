@@ -94,7 +94,7 @@ namespace WebMusic.Controllers
 
                 await _mediaService.CreateMedia(media);
 
-                return View("~/Views/Home/Index.cshtml", await _mediaService.GetMedias());
+                return RedirectToAction("Index", "Home");
             }
             ViewBag.ListGenre = new SelectList(await _genreService.GetGenres(), "Id", "Name");
             ViewBag.ListExecutor = new SelectList(await _executorService.GetExecutors(), "Id", "Name");
@@ -110,8 +110,8 @@ namespace WebMusic.Controllers
             if (ModelState.IsValid)
             {
                 await _mediaService.DeleteMedia(songId);
-                return View("~/Views/Home/Index.cshtml", await _mediaService.GetMedias());
-               
+                return RedirectToAction("Index", "Home");
+
             }
             return BadRequest(ModelState);
         }
@@ -149,7 +149,7 @@ namespace WebMusic.Controllers
                 m.id_Genre = genre.Id;
                 m.Path = path;
                 await _mediaService.UpdateMedia(m);
-                return RedirectToAction("Index", "Home", await _mediaService.GetMedias());
+                return RedirectToAction("Index", "Home");
             }
                
             ViewBag.ListGenre = new SelectList(await _genreService.GetGenres(), "Id", "Name");

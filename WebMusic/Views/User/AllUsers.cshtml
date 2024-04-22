@@ -33,7 +33,7 @@
                             <input type="hidden" asp-for="@item.Email" name="Email" />
 
                             <input type="number" id="userStatus_@item.Id" class="status" name="Status" value="@Html.DisplayFor(modelItem => item.Status)" style="width: 50px;" />
-                            <button type="button" class="changeStatusButton">@Resources.Resource.ChangeStatus</button>
+                            <button type="submit" class="changeStatusButton" >@Resources.Resource.ChangeStatus</button>
                         </form>
                     </td>
                 </tr>
