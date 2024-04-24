@@ -12,7 +12,7 @@ namespace WebMusic.DAL.Interfaces
     {
         IUserRepository user { get; }
         IMediaRepository media { get; }
-
+        IFavSongsRepository favSongs { get; }
         IRepository<Genre> genre { get; }
         IRepository<Executor> executor { get; }
 

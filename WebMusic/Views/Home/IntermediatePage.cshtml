@@ -1,5 +1,4 @@
-﻿@model WebMusic.Models.GenresAndExecutorsViewModel
-
+﻿
 <div class="quarter-page">
 
     <a class="href" asp-area="" asp-controller="Home" asp-action="Index">
@@ -21,7 +20,6 @@
 
         </div>
     </a>
-
     @if (Context.Session.Keys.Any())
     {
         <a class="href" asp-area="" asp-controller="Home" asp-action="FavoriteSongs">
@@ -37,43 +35,6 @@
 
 
 </div>
-<h1 style="color: white">@Resources.Resource.Executors</h1>
-<div class="two-columns">
-    @foreach (var item in Model.Executors)
-    {
-        <a class="audio-player" asp-area="" asp-controller="Home" asp-action="GetSongsE" asp-route-id="@item.Id">
-            <div>
-                <ul>
-                   
-                    <li style="font-size: 30px;">
-                        @Html.DisplayFor(modelItem => item.Name)
-
-
-                    </li>
-
-                </ul>
-            </div>
-        </a>
-      
-    }
-</div>
-
-<h1 style="color: white">@Resources.Resource.Genres</h1>
-<div class="two-columns">
-    @foreach (var item in Model.Genres)
-    {
-        <a class="audio-player" asp-area="" asp-controller="Home" asp-action="GetSongsG" asp-route-id="@item.Id">
-            <div>
-                <ul>
-                    <li style="font-size: 30px;">
-                        @Html.DisplayFor(modelItem => item.Name)
-
-
-                    </li>
-
-                </ul>
-            </div>
-        </a>
-        
-    }
+<div>
+    <h1 style="color:white;">@ViewBag.Message</h1>
 </div>

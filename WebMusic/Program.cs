@@ -15,7 +15,7 @@ builder.Services.AddWebMusicContext(connection);
 builder.Services.AddUnitOfWorkService();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IMediaService, MediaService>();
-
+builder.Services.AddTransient<IFavSongsService, FavSongsService>();
 builder.Services.AddTransient<IGenreService, GenreService>();
 builder.Services.AddTransient<IExecutorService, ExecutorService>();
 

@@ -17,5 +17,7 @@ namespace WebMusic.DAL.Entities
         public string Email { get; set; }
         public int? Status { get; set; }
         public virtual ICollection<Media> media { get; set; }
+
+        public virtual ICollection<FavSongs> favSongs { get; set; }
     }
 }
