@@ -189,6 +189,9 @@
   <data name="Name" xml:space="preserve">
     <value>Ім'я</value>
   </data>
+  <data name="Navigation" xml:space="preserve">
+    <value>Навігація</value>
+  </data>
   <data name="NotRegister" xml:space="preserve">
     <value>Чи не зареєстровані?</value>
   </data>

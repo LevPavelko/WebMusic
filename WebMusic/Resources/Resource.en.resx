@@ -189,6 +189,9 @@
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="Navigation" xml:space="preserve">
+    <value>Navigation</value>
+  </data>
   <data name="NotRegister" xml:space="preserve">
     <value>Not registered?</value>
   </data>
