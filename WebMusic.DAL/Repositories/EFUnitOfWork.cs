@@ -19,6 +19,7 @@ namespace WebMusic.DAL.Repositories
         private MediaRepository mediaRepository;
         private GenreRepository genreRepository;
         private ExecutorRepository executorRepository;
+        private FavoriteSongsRepository favoriteSongsRepository;
         public EFUnitOfWork(WebMusicContext context)
         {
             db = context;
@@ -34,7 +35,7 @@ namespace WebMusic.DAL.Repositories
             }
         }
 
-        public IRepository<Media> media
+        public IMediaRepository media
         {
             get
             {
@@ -60,6 +61,15 @@ namespace WebMusic.DAL.Repositories
                 if (executorRepository == null)
                     executorRepository = new ExecutorRepository(db);
                 return executorRepository;
+            }
+        }
+        public IFavSongsRepository favSongs
+        {
+            get
+            {
+                if (favoriteSongsRepository == null)
+                    favoriteSongsRepository = new FavoriteSongsRepository(db);
+                return favoriteSongsRepository;
             }
         }
 

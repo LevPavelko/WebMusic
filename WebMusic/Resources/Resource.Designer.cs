@@ -88,6 +88,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Вы уже добавили эту песню в плейлист!.
+        /// </summary>
+        public static string AlreadyInPlaylist {
+            get {
+                return ResourceManager.GetString("AlreadyInPlaylist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Вернуться к списку.
         /// </summary>
         public static string BackToList {
@@ -187,6 +196,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Любимые песни.
+        /// </summary>
+        public static string FavoriteSongs {
+            get {
+                return ResourceManager.GetString("FavoriteSongs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Поле должно быть установлено.
         /// </summary>
         public static string FieldMustBeSet {
@@ -277,6 +295,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Навигация.
+        /// </summary>
+        public static string Navigation {
+            get {
+                return ResourceManager.GetString("Navigation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Не зарегистрированы?.
         /// </summary>
         public static string NotRegister {
@@ -331,11 +358,47 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Сортировка по автору.
+        /// </summary>
+        public static string SortByExecutor {
+            get {
+                return ResourceManager.GetString("SortByExecutor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Сортировка по песням.
+        /// </summary>
+        public static string SortBySong {
+            get {
+                return ResourceManager.GetString("SortBySong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Статус.
         /// </summary>
         public static string Status {
             get {
                 return ResourceManager.GetString("Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Песня успешно добавленна в плейлист!.
+        /// </summary>
+        public static string SuccessAddedToFav {
+            get {
+                return ResourceManager.GetString("SuccessAddedToFav", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Успешно удаленно из плейлиста!.
+        /// </summary>
+        public static string SuccessDeleteFromFav {
+            get {
+                return ResourceManager.GetString("SuccessDeleteFromFav", resourceCulture);
             }
         }
         

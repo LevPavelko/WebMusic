@@ -15,6 +15,8 @@ namespace WebMusic.BLL.Interfaces
         Task<MediaDTO> GetMedia(int id);
         Task<MediaDTO> GetMediaByName(string name);
         Task<List<MediaDTO>> Searching(string name);
+        Task<List<MediaDTO>> GetingSongsByExecutor(int id);
+        Task<List<MediaDTO>> GetingSongsByGenre(int id);
         Task<IEnumerable<MediaDTO>> GetMedias();
     }
 }

@@ -18,5 +18,7 @@ namespace WebMusic.DAL.Entities
 
         public virtual Users User { get; set; }
         public int Id_User { get; set; }
+
+        public virtual ICollection<FavSongs> favSongs { get; set; }
     }
 }

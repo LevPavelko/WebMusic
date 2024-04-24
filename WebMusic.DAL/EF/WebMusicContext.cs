@@ -16,11 +16,13 @@ namespace WebMusic.DAL.EF
         public DbSet<Genre> genre { get; set; }
         public DbSet<Executor> executor { get; set; }
 
+        public DbSet<FavSongs> favSongs { get; set; }
+
         public WebMusicContext(DbContextOptions<WebMusicContext> options)
            : base(options)
         {
             Database.EnsureCreated();
-           
+
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -41,6 +43,18 @@ namespace WebMusic.DAL.EF
                .WithMany(u => u.media)
                .HasForeignKey(m => m.id_Executor)
                .IsRequired();
+
+            modelBuilder.Entity<FavSongs>()
+              .HasOne(m => m.media)
+              .WithMany(u => u.favSongs)
+              .HasForeignKey(m => m.id_Song)
+              .IsRequired();
+
+            modelBuilder.Entity<FavSongs>()
+            .HasOne(m => m.user)
+            .WithMany(u => u.favSongs)
+            .HasForeignKey(m => m.id_User)
+            .IsRequired();
 
 
         }

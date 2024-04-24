@@ -1,0 +1,40 @@
+﻿
+<div class="quarter-page">
+
+    <a class="href" asp-area="" asp-controller="Home" asp-action="Index">
+        <div class="panel-items">
+            <div class="panel-img">
+                <img src="/images/house.png" width="35px" height="35px" style="margin-left: 7px; margin-bottom: 15px;margin-top: 10px;" />
+                @Resources.Resource.Home
+            </div>
+
+        </div>
+    </a>
+
+    <a class="href" asp-area="" asp-controller="Home" asp-action="Navigation">
+        <div class="panel-items">
+            <div class="panel-img">
+                <img src="/images/compass.png" width="35px" height="35px" style="margin-left: 7px; margin-bottom: 15px;margin-top: 10px;" />
+                @Resources.Resource.Navigation
+            </div>
+
+        </div>
+    </a>
+    @if (Context.Session.Keys.Any())
+    {
+        <a class="href" asp-area="" asp-controller="Home" asp-action="FavoriteSongs">
+            <div class="panel-items">
+                <div class="panel-img">
+                    <img src="/images/HeartBlack.png" width="35px" height="35px" style="margin-left: 7px; margin-bottom: 15px;margin-top: 10px;" />
+                    @Resources.Resource.FavoriteSongs
+                </div>
+
+            </div>
+        </a>
+    }
+
+
+</div>
+<div>
+    <h1 style="color:white;">@ViewBag.Message</h1>
+</div>

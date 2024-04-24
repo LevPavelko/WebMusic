@@ -1,17 +1,16 @@
-﻿@model WebMusic.Models.IndexViewModel
+﻿@model IEnumerable<WebMusic.BLL.DTO.MediaDTO>
 @{
-
-    ViewData["Title"] = "WebMusic";
+    ViewData["Title"] = "Favorite Songs";
 }
 <div class="quarter-page">
-   
+
     <a class="href" asp-area="" asp-controller="Home" asp-action="Index">
         <div class="panel-items">
             <div class="panel-img">
                 <img src="/images/house.png" width="35px" height="35px" style="margin-left: 7px; margin-bottom: 15px;margin-top: 10px;" />
                 @Resources.Resource.Home
             </div>
-           
+
         </div>
     </a>
 
@@ -37,25 +36,12 @@
         </a>
     }
 
-   
-    <div style="text-align:center; margin-top: 15px; font-size: 21px">
-        <sort-header action="Index" up="@Model.SortViewModel.Up"
-                     current="@Model.SortViewModel.Current" property="@Model.SortViewModel.SongSort">
-            @Resources.Resource.SortBySong
-        </sort-header>
-        <br />
-        <sort-header action="Index" up="@Model.SortViewModel.Up"
-                     current="@Model.SortViewModel.Current" property="@Model.SortViewModel.ExecutorSort">
-            @Resources.Resource.SortByExecutor
-        </sort-header>
-    </div>
-  
+
     
 </div>
 
-
 <div class="two-columns">
-    @foreach (var item in Model.Songs)
+    @foreach (var item in Model)
     {
         <div class="audio-player">
             <ul>
@@ -75,24 +61,21 @@
                         <img src="/images/HeartBlack.png" width="15px" height="15px" />
                     </a>
                 }
-                
+
             </div>
 
             <div class="action-links">
-                @if (Context.Session.GetInt32("Status") == 3)
-                {
-                    <a href="#" onclick="event.preventDefault(); document.getElementById('deleteForm_@item.Id').submit();" class="delete-button">@Resources.Resource.Delete</a>
-                    <label>|</label>
-                    <a asp-controller="Media" asp-action="EditMedia" asp-route-id="@item.Id" class="edit-button">@Resources.Resource.Edit</a>
-                    <form id="deleteForm_@item.Id" asp-area="" asp-controller="Media" asp-action="DeleteSong" method="post" style="display: none;">
-                        <input type="hidden" name="songId" value="@item.Id" />
-                    </form>
-                }
+
+                <a href="#" onclick="event.preventDefault(); document.getElementById('deleteForm_@item.Id').submit();" class="delete-button">@Resources.Resource.Delete</a>
+
+                <form id="deleteForm_@item.Id" asp-area="" asp-controller="Home" asp-action="DeleteSong" method="post" style="display: none;">
+                    <input type="hidden" name="id" value="@item.Id" /> <!-- Используйте item.Id здесь -->
+                </form>
+
+              
+             
             </div>
-            
+
         </div>
     }
 </div>
-
-<page-link page-model="Model.PageViewModel" page-action="Index"></page-link>
-

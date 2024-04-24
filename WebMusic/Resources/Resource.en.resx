@@ -126,6 +126,9 @@
   <data name="AddGenre" xml:space="preserve">
     <value>Add Genre</value>
   </data>
+  <data name="AlreadyInPlaylist" xml:space="preserve">
+    <value>You have already added this song to your playlist!</value>
+  </data>
   <data name="BackToList" xml:space="preserve">
     <value>Back to list</value>
   </data>
@@ -159,6 +162,9 @@
   <data name="Executors" xml:space="preserve">
     <value>Exexcutors</value>
   </data>
+  <data name="FavoriteSongs" xml:space="preserve">
+    <value>Favorite Songs</value>
+  </data>
   <data name="FieldMustBeSet" xml:space="preserve">
     <value>Field must be set</value>
   </data>
@@ -189,6 +195,9 @@
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="Navigation" xml:space="preserve">
+    <value>Navigation</value>
+  </data>
   <data name="NotRegister" xml:space="preserve">
     <value>Not registered?</value>
   </data>
@@ -207,8 +216,20 @@
   <data name="Song" xml:space="preserve">
     <value>Song</value>
   </data>
+  <data name="SortByExecutor" xml:space="preserve">
+    <value>Sort by author</value>
+  </data>
+  <data name="SortBySong" xml:space="preserve">
+    <value>Sort by song</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
+  </data>
+  <data name="SuccessAddedToFav" xml:space="preserve">
+    <value>The song has been successfully added to the playlist!</value>
+  </data>
+  <data name="SuccessDeleteFromFav" xml:space="preserve">
+    <value>Success delete from favorites!</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Title</value>

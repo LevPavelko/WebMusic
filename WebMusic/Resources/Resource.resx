@@ -126,6 +126,9 @@
   <data name="AddGenre" xml:space="preserve">
     <value>Добавить жанр</value>
   </data>
+  <data name="AlreadyInPlaylist" xml:space="preserve">
+    <value>Вы уже добавили эту песню в плейлист!</value>
+  </data>
   <data name="BackToList" xml:space="preserve">
     <value>Вернуться к списку</value>
   </data>
@@ -159,6 +162,9 @@
   <data name="Executors" xml:space="preserve">
     <value>Исполнители</value>
   </data>
+  <data name="FavoriteSongs" xml:space="preserve">
+    <value>Любимые песни</value>
+  </data>
   <data name="FieldMustBeSet" xml:space="preserve">
     <value>Поле должно быть установлено</value>
   </data>
@@ -189,6 +195,9 @@
   <data name="Name" xml:space="preserve">
     <value>Имя</value>
   </data>
+  <data name="Navigation" xml:space="preserve">
+    <value>Навигация</value>
+  </data>
   <data name="NotRegister" xml:space="preserve">
     <value>Не зарегистрированы?</value>
   </data>
@@ -207,8 +216,20 @@
   <data name="Song" xml:space="preserve">
     <value>Песня</value>
   </data>
+  <data name="SortByExecutor" xml:space="preserve">
+    <value>Сортировка по автору</value>
+  </data>
+  <data name="SortBySong" xml:space="preserve">
+    <value>Сортировка по песням</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Статус</value>
+  </data>
+  <data name="SuccessAddedToFav" xml:space="preserve">
+    <value>Песня успешно добавленна в плейлист!</value>
+  </data>
+  <data name="SuccessDeleteFromFav" xml:space="preserve">
+    <value>Успешно удаленно из плейлиста!</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Название</value>
