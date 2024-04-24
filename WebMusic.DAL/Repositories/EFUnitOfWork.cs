@@ -34,7 +34,7 @@ namespace WebMusic.DAL.Repositories
             }
         }
 
-        public IRepository<Media> media
+        public IMediaRepository media
         {
             get
             {

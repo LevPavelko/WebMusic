@@ -129,5 +129,43 @@ namespace WebMusic.BLL.Services
             return mediaDTOs;
 
         }
+        public async Task<List<MediaDTO>> GetingSongsByExecutor(int id)
+        {
+            var executorId = await Database.media.GetSongsByExecutor(id);
+            if (executorId == null)
+                throw new ValidationException("Wrong id!", "");
+            var mediaDTOs = executorId.Select(a => new MediaDTO
+            {
+                Id = a.Id,
+                Title = a.Title,
+                id_Executor = a.id_Executor,
+                Executor = a.Executor?.Name,
+                id_Genre = a.id_Genre,
+                Genre = a.Genre?.Name,
+                Path = a.Path,
+                Id_User = a.Id_User
+
+            }).ToList();
+            return mediaDTOs;
+        }
+        public async Task<List<MediaDTO>> GetingSongsByGenre(int id)
+        {
+            var genreId = await Database.media.GetSongsByGenre(id);
+            if (genreId == null)
+                throw new ValidationException("Wrong id!", "");
+            var mediaDTOs = genreId.Select(a => new MediaDTO
+            {
+                Id = a.Id,
+                Title = a.Title,
+                id_Executor = a.id_Executor,
+                Executor = a.Executor?.Name,
+                id_Genre = a.id_Genre,
+                Genre = a.Genre?.Name,
+                Path = a.Path,
+                Id_User = a.Id_User
+
+            }).ToList();
+            return mediaDTOs;
+        }
     }
 }

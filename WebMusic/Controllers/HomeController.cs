@@ -82,20 +82,25 @@ namespace WebMusic.Controllers
         {
             var genres = await _genreService.GetGenres();
             var executors = await _executorService.GetExecutors();
+            var songs = await _mediaService.GetMedias();
 
-            GenresAndExecutorsViewModel viewModel = new GenresAndExecutorsViewModel(genres,executors);
+            GenresAndExecutorsViewModel viewModel = new GenresAndExecutorsViewModel(genres,executors,songs);
             return View(viewModel);
         }
 
-        public async Task<IActionResult> GetExecutorsSongs(int id)
+        public async Task<IActionResult> GetSongsE(int id)
         {
 
-            return View();
+            var songs = await _mediaService.GetingSongsByExecutor(id); 
+           
+            return View("SongsByFilter", songs);
+
         }
-        public async Task<IActionResult> GetGenresSongs(int id)
+        public async Task<IActionResult> GetSongsG(int id)
         {
-
-            return View();
+            var songs = await _mediaService.GetingSongsByGenre(id);
+            return View("SongsByFilter", songs);
+           
         }
         
 

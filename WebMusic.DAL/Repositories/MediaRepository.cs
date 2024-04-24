@@ -11,7 +11,7 @@ using WebMusic.DAL.EF;
 
 namespace WebMusic.DAL.Repositories
 {
-    public class MediaRepository : IRepository<Media>
+    public class MediaRepository : IMediaRepository
     {
         private WebMusicContext db;
 
@@ -55,5 +55,14 @@ namespace WebMusic.DAL.Repositories
             return await db.media.Where(e => e.Title.Contains(name)).ToListAsync();
 
         }
+        public async Task<List<Media>> GetSongsByExecutor(int id)
+        {
+            return await db.media.Where(e => e.id_Executor == id).ToListAsync();
+        }
+        public async Task<List<Media>> GetSongsByGenre(int id)
+        {
+            return await db.media.Where(e => e.id_Genre == id).ToListAsync();
+        }
+
     }
 }
