@@ -431,12 +431,12 @@ h3{
 .panel-img {
     margin-left: 15px;
 }
-.href {
+a {
     color: black;
     text-decoration: none;
 }
 
 a:hover {
-    
-    color: black; 
+    text-decoration: none;
+    color: black;
 }

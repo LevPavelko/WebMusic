@@ -1,0 +1,42 @@
+﻿@model WebMusic.Models.GenresAndExecutorsViewModel
+
+<h1 style="color: white">@Resources.Resource.Executors</h1>
+<div class="two-columns">
+    @foreach (var item in Model.Executors)
+    {
+        <a class="audio-player" asp-area="" asp-controller="Home" asp-action="GetExecutorsSongs" asp-route-id="@item.Id">
+            <div>
+                <ul>
+                   
+                    <li style="font-size: 30px;">
+                        @Html.DisplayFor(modelItem => item.Name)
+
+
+                    </li>
+
+                </ul>
+            </div>
+        </a>
+      
+    }
+</div>
+
+<h1 style="color: white">@Resources.Resource.Genres</h1>
+<div class="two-columns">
+    @foreach (var item in Model.Genres)
+    {
+        <a class="audio-player" asp-area="" asp-controller="Home" asp-action="GetGenresSongs" asp-route-id="@item.Id">
+            <div>
+                <ul>
+                    <li style="font-size: 30px;">
+                        @Html.DisplayFor(modelItem => item.Name)
+
+
+                    </li>
+
+                </ul>
+            </div>
+        </a>
+        
+    }
+</div>

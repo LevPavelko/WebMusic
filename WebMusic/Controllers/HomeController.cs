@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using WebMusic.BLL.DTO;
 using WebMusic.BLL.Interfaces;
@@ -33,8 +34,6 @@ namespace WebMusic.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("Index", "Home");
         }
-
-
 
         public async Task<IActionResult> Index(int page = 1, SortState sortOrder = SortState.SongAsc)
         {
@@ -78,6 +77,27 @@ namespace WebMusic.Controllers
             Response.Cookies.Append("lang", lang, option); // создание куки
             return Redirect(returnUrl);
         }
+
+        public async Task<IActionResult> NavigationAsync()
+        {
+            var genres = await _genreService.GetGenres();
+            var executors = await _executorService.GetExecutors();
+
+            GenresAndExecutorsViewModel viewModel = new GenresAndExecutorsViewModel(genres,executors);
+            return View(viewModel);
+        }
+
+        public async Task<IActionResult> GetExecutorsSongs(int id)
+        {
+
+            return View();
+        }
+        public async Task<IActionResult> GetGenresSongs(int id)
+        {
+
+            return View();
+        }
+        
 
     }
 }
