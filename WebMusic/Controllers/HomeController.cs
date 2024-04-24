@@ -36,14 +36,22 @@ namespace WebMusic.Controllers
 
 
 
-        public async Task<IActionResult> Index(int page = 1)
+        public async Task<IActionResult> Index(int page = 1, SortState sortOrder = SortState.SongAsc)
         {
             int pageSize = 12;   
             IEnumerable<MediaDTO> mediaItems = await _mediaService.GetMedias();
+            mediaItems = sortOrder switch
+            {
+                SortState.SongDesc => mediaItems.OrderByDescending(s => s.Title),
+                SortState.ExecutorAsc => mediaItems.OrderBy(s => s.Executor),
+                SortState.ExecutorDesc => mediaItems.OrderByDescending(s => s.Executor),
+                
+                _ => mediaItems.OrderBy(s => s.Title),
+            };
             var count = mediaItems.Count();
             var items = mediaItems.Skip((page - 1) * pageSize).Take(pageSize).ToList();
             PageViewModel pageViewModel = new PageViewModel(count, page, pageSize);
-            IndexViewModel viewModel = new IndexViewModel(items, pageViewModel);
+            IndexViewModel viewModel = new IndexViewModel(items, pageViewModel, new SortViewModel(sortOrder));
             //IEnumerable<IndexViewModel> viewModelList = mediaItems.Select(media => new IndexViewModel(songs, pageViewModel));
             return View(viewModel);
             //return View(await _mediaService.GetMedias());

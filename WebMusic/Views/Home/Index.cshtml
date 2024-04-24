@@ -3,7 +3,21 @@
 
     ViewData["Title"] = "fff";
 }
-
+<tr>
+    <th>
+        <sort-header action="Index" up="@Model.SortViewModel.Up"
+                     current="@Model.SortViewModel.Current" property="@Model.SortViewModel.SongSort">
+            Song
+        </sort-header>
+    </th>
+    <th>
+        <sort-header action="Index" up="@Model.SortViewModel.Up"
+                     current="@Model.SortViewModel.Current" property="@Model.SortViewModel.ExecutorSort">
+            Executor
+        </sort-header>
+    </th>
+    
+</tr>
 <div class="two-columns">
     @foreach (var item in Model.Songs)
     {
